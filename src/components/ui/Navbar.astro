@@ -150,12 +150,13 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     const mobileMenu = document.getElementById('mobile-menu');
     if (!navbar || !toggle || !mobileMenu) return;
 
-    let isOpen = false;
-    let lastScroll = 0;
+    var isOpen = false;
+    var lastScroll = 0;
+    var savedScrollY = 0;
 
     /* ── Scroll: frosted glass + shrink ── */
     function onScroll() {
-      const y = window.scrollY;
+      var y = window.scrollY;
       if (y > 40) {
         navbar.classList.add('is-scrolled');
       } else {
@@ -167,13 +168,26 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    /* ── Lock/unlock body scroll (iOS-safe) ── */
+    function lockScroll() {
+      savedScrollY = window.scrollY;
+      document.body.style.top = '-' + savedScrollY + 'px';
+      document.body.classList.add('no-scroll');
+    }
+
+    function unlockScroll() {
+      document.body.classList.remove('no-scroll');
+      document.body.style.top = '';
+      window.scrollTo(0, savedScrollY);
+    }
+
     /* ── Mobile toggle ── */
     toggle.addEventListener('click', function () {
       isOpen = !isOpen;
       navbar.classList.toggle('is-open', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
       mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      document.body.classList.toggle('no-scroll', isOpen);
+      if (isOpen) { lockScroll(); } else { unlockScroll(); }
     });
 
     /* Close on link click */
@@ -184,7 +198,7 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
           navbar.classList.remove('is-open');
           toggle.setAttribute('aria-expanded', 'false');
           mobileMenu.setAttribute('aria-hidden', 'true');
-          document.body.classList.remove('no-scroll');
+          unlockScroll();
         }
       });
     });
@@ -494,6 +508,8 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     right: 0;
     bottom: 0;
     width: 100%;
+    height: 100%;
+    height: 100dvh;
     background: #FAFAF9;
     display: flex;
     flex-direction: column;
@@ -501,9 +517,10 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     padding: 5.5rem 2.5rem 2.5rem;
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1;
+    z-index: 999;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .navbar.is-open .navbar__mobile {
