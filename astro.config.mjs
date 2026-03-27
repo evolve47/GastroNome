@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://gastronome.se',
+  compressHTML: true,
   i18n: {
     locales: ['sv', 'en'],
     defaultLocale: 'sv',

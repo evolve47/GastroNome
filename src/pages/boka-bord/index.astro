@@ -10,7 +10,7 @@ import Button from '../../components/ui/Button.astro';
   <!-- Hero Banner -->
   <section class="page-hero">
     <div class="page-hero__bg">
-      <img src="/images/615490572_1574239250966126_6866087512718104938_n.jpg" alt="Bar på GASTRO|nome" loading="eager" />
+      <img src="/images/wine-toast-booking.webp" alt="Vintoast och middagsupplevelse på GASTRO|nome" loading="eager" fetchpriority="high" width="2560" height="1440" />
       <div class="page-hero__overlay"></div>
     </div>
     <div class="page-hero__content">
@@ -166,12 +166,7 @@ import Button from '../../components/ui/Button.astro';
 </BaseLayout>
 
 <script>
-  // Animations
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
-    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-  );
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  // Fade-up animations handled by global observer in BaseLayout
 
   // Guest counter
   const guestCount = document.getElementById('guestCount');
@@ -420,7 +415,5 @@ import Button from '../../components/ui/Button.astro';
     .bform__row { grid-template-columns: 1fr; }
   }
 
-  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
-  .fade-up.is-visible { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
+  /* fade-up animations handled by shared page styles */
 </style>

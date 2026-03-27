@@ -23,7 +23,7 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         poster="/images/2026-02-20 (1).webp"
       >
         <source src="/images/hero-video-web.mp4" type="video/mp4" />
@@ -35,6 +35,8 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
         alt="Vackert upplagd rätt med sauce som hälls vid GASTRO|nome"
         loading="eager"
         fetchpriority="high"
+        width="1920"
+        height="1080"
         id="heroImg"
       />
     </div>
@@ -104,7 +106,11 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
     const heroVideo = document.getElementById('heroVideo') as HTMLVideoElement | null;
     const heroImg = document.getElementById('heroImg');
 
-    if (heroVideo) {
+    // Check if user is on save-data mode or slow connection
+    const conn = (navigator as any).connection;
+    const shouldSkipVideo = conn?.saveData || conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g';
+
+    if (heroVideo && !shouldSkipVideo) {
       // When video starts playing, fade out fallback image
       const onVideoPlay = () => {
         heroVideo.classList.add('is-playing');
@@ -136,6 +142,12 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
         heroVideo.classList.remove('is-playing');
         if (heroImg) heroImg.classList.remove('is-hidden');
       }
+    } else if (heroVideo && shouldSkipVideo) {
+      // Save data mode: don't autoplay, show fallback
+      heroVideo.pause();
+      heroVideo.removeAttribute('autoplay');
+      heroVideo.preload = 'none';
+      if (heroImg) heroImg.classList.remove('is-hidden');
     } else if (heroImg && !prefersReducedMotion) {
       // No video fallback: Ken Burns on image
       heroImg.classList.add('ken-burns');
