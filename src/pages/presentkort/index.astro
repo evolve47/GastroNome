@@ -7,11 +7,22 @@ import Button from '../../components/ui/Button.astro';
   title="Presentkort — GASTRO|nome Mat & Bar | Ge bort en upplevelse"
   description="Ge bort en oförglömlig matupplevelse. Köp presentkort till GASTRO|nome, Lunds #1 restaurang. Perfekt present till alla tillfällen."
 >
+  <!-- Mini hero banner for navbar visibility -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="/images/652511994_18086431202349192_4627669848014543762_n.jpg" alt="Cocktail på GASTRO|nome uteservering" loading="eager" />
+      <div class="page-hero__overlay"></div>
+    </div>
+    <div class="page-hero__content">
+      <span class="page-hero__eyebrow">Presentkort</span>
+      <h1 class="page-hero__title">Ge bort en upplevelse</h1>
+    </div>
+  </section>
+
   <section class="gift">
     <div class="gift__container">
       <div class="gift__content fade-up">
-        <span class="gift__eyebrow">Presentkort</span>
-        <h1 class="gift__title">Ge bort en<br />oförglömlig kväll</h1>
+        <h2 class="gift__title">Perfekt present<br />till alla tillfällen</h2>
         <p class="gift__text">
           Letar du efter den perfekta presenten? Ett presentkort till GASTRO|nome ger mottagaren
           friheten att njuta av prisbelönt mat och dryck — när det passar dem bäst.
@@ -53,12 +64,18 @@ import Button from '../../components/ui/Button.astro';
 </script>
 
 <style>
+  /* Page Hero Banner */
+  .page-hero { position: relative; height: 40vh; min-height: 280px; max-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0a0a0a; }
+  .page-hero__bg { position: absolute; inset: 0; }
+  .page-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6)); }
+  .page-hero__content { position: relative; z-index: 2; text-align: center; padding: 0 1.5rem; }
+  .page-hero__eyebrow { display: block; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; }
+  .page-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 400; color: #fff; margin: 0; }
+
   .gift {
-    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    padding: clamp(4rem, 8vw, 6rem) 1.5rem;
     background: var(--color-bg, #FAFAF9);
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
   }
 
   .gift__container {

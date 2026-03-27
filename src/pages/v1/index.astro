@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroStatic from '../../components/sections/HeroStatic.astro';
+import AwardsBanner from '../../components/sections/AwardsBanner.astro';
+import ConceptIntro from '../../components/sections/ConceptIntro.astro';
+import FoodShowcase from '../../components/sections/FoodShowcase.astro';
+import EventHighlights from '../../components/sections/EventHighlights.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FoundersStory from '../../components/sections/FoundersStory.astro';
+import TakeawayDelivery from '../../components/sections/TakeawayDelivery.astro';
+import InstagramFeed from '../../components/sections/InstagramFeed.astro';
+---
+
+<BaseLayout
+  title="GASTRO|nome — Mat & Bar i Lund | V1 Static Hero"
+  description="Upplev GASTRO|nome, Lunds #1 restaurang. Prisbelönt italiensk-svensk fusion, vinnare av Pizza SM 2023 & 2024."
+  noindex={true}
+>
+  <HeroStatic />
+  <AwardsBanner />
+  <ConceptIntro />
+  <FoodShowcase />
+  <EventHighlights />
+  <Testimonials />
+  <FoundersStory />
+  <TakeawayDelivery />
+  <InstagramFeed />
+</BaseLayout>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.fade-up, .fade-in, .slide-in-left, .slide-in-right');
+  if (prefersReducedMotion) {
+    els.forEach((el) => el.classList.add('is-visible'));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+    els.forEach((el) => observer.observe(el));
+  }
+</script>
+
+<style is:global>
+  .fade-up, .fade-in, .slide-in-left, .slide-in-right { opacity: 0; transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .fade-up { transform: translateY(30px); }
+  .slide-in-left { transform: translateX(-40px); }
+  .slide-in-right { transform: translateX(40px); }
+  .fade-up.is-visible, .fade-in.is-visible, .slide-in-left.is-visible, .slide-in-right.is-visible { opacity: 1; transform: translate(0); }
+  .delay-1 { transition-delay: 0.15s; } .delay-2 { transition-delay: 0.3s; } .delay-3 { transition-delay: 0.45s; } .delay-4 { transition-delay: 0.6s; }
+  @media (prefers-reduced-motion: reduce) { .fade-up, .fade-in, .slide-in-left, .slide-in-right { opacity: 1; transform: none; transition: none; } }
+</style>

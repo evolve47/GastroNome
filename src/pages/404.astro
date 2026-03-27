@@ -4,15 +4,20 @@ import Button from '../components/ui/Button.astro';
 ---
 
 <BaseLayout title="404 — Sidan hittades inte" description="Sidan du söker finns inte." noindex={true}>
-  <section class="not-found">
-    <div class="not-found__content">
-      <span class="not-found__code">404</span>
-      <h1 class="not-found__title">Sidan hittades inte</h1>
-      <p class="not-found__text">
+  <!-- Dark hero for navbar visibility -->
+  <section class="not-found-hero">
+    <div class="not-found-hero__bg">
+      <img src="/images/642967107_18084581576349192_6735269975905024431_n.jpg" alt="GASTRO|nome interiör" loading="eager" />
+      <div class="not-found-hero__overlay"></div>
+    </div>
+    <div class="not-found-hero__content">
+      <span class="not-found-hero__code">404</span>
+      <h1 class="not-found-hero__title">Sidan hittades inte</h1>
+      <p class="not-found-hero__text">
         Sidan du letar efter verkar ha flyttats eller finns inte längre.
         Gå tillbaka till startsidan och utforska vår meny.
       </p>
-      <div class="not-found__actions">
+      <div class="not-found-hero__actions">
         <Button href="/" variant="primary" size="lg">Tillbaka till Hem</Button>
         <Button href="/menyer" variant="outline" size="lg">Se Menyn</Button>
       </div>
@@ -21,46 +26,69 @@ import Button from '../components/ui/Button.astro';
 </BaseLayout>
 
 <style>
-  .not-found {
-    min-height: 70vh;
+  .not-found-hero {
+    position: relative;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1.5rem;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  .not-found-hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .not-found-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+
+  .not-found-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  }
+
+  .not-found-hero__content {
+    position: relative;
+    z-index: 2;
     text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    max-width: 520px;
   }
 
-  .not-found__content {
-    max-width: 480px;
-  }
-
-  .not-found__code {
+  .not-found-hero__code {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(5rem, 12vw, 10rem);
+    font-size: clamp(6rem, 15vw, 12rem);
     font-weight: 300;
     line-height: 1;
-    color: var(--color-border, #E8E5E0);
+    color: rgba(255, 255, 255, 0.12);
     margin-bottom: 1rem;
   }
 
-  .not-found__title {
+  .not-found-hero__title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 400;
-    color: var(--color-text, #1A1A1A);
+    color: #fff;
     margin: 0 0 1rem;
   }
 
-  .not-found__text {
+  .not-found-hero__text {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--color-text-secondary, #6B6B6B);
-    margin: 0 0 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 2.5rem;
   }
 
-  .not-found__actions {
+  .not-found-hero__actions {
     display: flex;
     gap: 1rem;
     justify-content: center;
