@@ -3,58 +3,184 @@ import Button from '../ui/Button.astro';
 ---
 
 <section class="hero" id="hero">
-  <div class="hero__bg">
-    <img
-      src="/images/2026-02-20 (1).webp"
-      alt="Vackert upplagd rätt med sauce som hälls vid GASTRO|nome"
-      loading="eager"
-      fetchpriority="high"
-    />
+  <div class="hero__bg" id="heroBg">
+    <div class="hero__img-wrap" id="heroImgWrap">
+      <img
+        src="/images/2026-02-20 (1).webp"
+        alt="Vackert upplagd rätt med sauce som hälls vid GASTRO|nome"
+        loading="eager"
+        fetchpriority="high"
+        id="heroImg"
+      />
+    </div>
     <div class="hero__overlay"></div>
+    <!-- Vignette for cinematic depth -->
+    <div class="hero__vignette"></div>
   </div>
 
-  <div class="hero__content">
-    <span class="hero__eyebrow fade-up">Bangatan 6, Lund</span>
-    <h1 class="hero__title fade-up delay-1">
-      En oförglömlig<br />upplevelse
+  <!-- Decorative floating particles (subtle gold dust) -->
+  <div class="hero__particles" aria-hidden="true">
+    <span class="particle particle--1"></span>
+    <span class="particle particle--2"></span>
+    <span class="particle particle--3"></span>
+    <span class="particle particle--4"></span>
+    <span class="particle particle--5"></span>
+  </div>
+
+  <div class="hero__content" id="heroContent">
+    <!-- Decorative line above eyebrow -->
+    <div class="hero__line hero-reveal" data-delay="0"></div>
+    <span class="hero__eyebrow hero-reveal" data-delay="200">Bangatan 6, Lund</span>
+
+    <h1 class="hero__title">
+      <span class="hero__title-line hero-reveal" data-delay="400">En oförglömlig</span>
+      <span class="hero__title-line hero-reveal" data-delay="550">upplevelse</span>
     </h1>
-    <p class="hero__subtitle fade-up delay-2">
+
+    <p class="hero__subtitle hero-reveal" data-delay="750">
       Italiensk-svensk fusion med kärlek till råvaror, hantverk och gemenskap
     </p>
-    <div class="hero__actions fade-up delay-3">
+
+    <div class="hero__actions hero-reveal" data-delay="950">
       <Button href="/boka-bord" variant="primary" size="lg">Boka Bord</Button>
       <Button href="/menyer" variant="outline" size="lg">Utforska Menyn</Button>
     </div>
   </div>
 
-  <div class="hero__scroll-indicator fade-in delay-4">
-    <span>Scrolla</span>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-    </svg>
+  <!-- Scroll indicator with animated line -->
+  <div class="hero__scroll" id="heroScroll">
+    <div class="hero__scroll-line"></div>
+    <span class="hero__scroll-text">Scrolla</span>
+  </div>
+
+  <!-- Side decorative text -->
+  <div class="hero__side-text" aria-hidden="true">
+    EST. 2009 — LUND, SVERIGE
   </div>
 </section>
 
+<script>
+  // === Hero Cinematic Engine ===
+  (function () {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- 1. Text Reveal Animation (staggered clip-path reveals) ---
+    const revealElements = document.querySelectorAll('.hero-reveal');
+    if (prefersReducedMotion) {
+      revealElements.forEach((el) => el.classList.add('is-revealed'));
+    } else {
+      revealElements.forEach((el) => {
+        const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+        setTimeout(() => el.classList.add('is-revealed'), 300 + delay);
+      });
+    }
+
+    // --- 2. Ken Burns (slow zoom) on hero image ---
+    const heroImg = document.getElementById('heroImg');
+    if (heroImg && !prefersReducedMotion) {
+      heroImg.classList.add('ken-burns');
+    }
+
+    // --- 3. Parallax on scroll (image moves slower, content fades) ---
+    const heroBg = document.getElementById('heroBg');
+    const heroContent = document.getElementById('heroContent');
+    const heroScroll = document.getElementById('heroScroll');
+    const hero = document.getElementById('hero');
+
+    if (!prefersReducedMotion && hero) {
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const rect = hero.getBoundingClientRect();
+            const scrolled = -rect.top;
+            const heroH = hero.offsetHeight;
+
+            if (scrolled >= 0 && scrolled <= heroH) {
+              const progress = scrolled / heroH;
+
+              // Parallax: image moves at 40% scroll speed
+              if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+              }
+
+              // Content fades out and moves up
+              if (heroContent) {
+                heroContent.style.opacity = String(1 - progress * 1.5);
+                heroContent.style.transform = `translateY(${scrolled * -0.2}px)`;
+              }
+
+              // Scroll indicator fades
+              if (heroScroll) {
+                heroScroll.style.opacity = String(1 - progress * 3);
+              }
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // --- 4. Cursor-reactive parallax (desktop only) ---
+    const heroImgWrap = document.getElementById('heroImgWrap');
+    if (!prefersReducedMotion && heroImgWrap && window.innerWidth > 1024) {
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        targetX = ((e.clientX - cx) / cx) * -8; // max 8px shift
+        targetY = ((e.clientY - cy) / cy) * -5; // max 5px shift
+      });
+
+      const animate = () => {
+        currentX += (targetX - currentX) * 0.06;
+        currentY += (targetY - currentY) * 0.06;
+        heroImgWrap.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.08)`;
+        requestAnimationFrame(animate);
+      };
+      animate();
+    }
+  })();
+</script>
+
 <style>
+  /* === HERO SECTION === */
   .hero {
     position: relative;
     height: 100vh;
+    height: 100svh;
     min-height: 700px;
-    max-height: 1200px;
+    max-height: 1400px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #0a0a0a;
+    background: #050505;
   }
 
+  /* --- Background Layer --- */
   .hero__bg {
     position: absolute;
     inset: 0;
     z-index: 1;
+    will-change: transform;
   }
 
-  .hero__bg img {
+  .hero__img-wrap {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.08); /* oversize for cursor parallax room */
+    will-change: transform;
+  }
+
+  .hero__img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -62,56 +188,147 @@ import Button from '../ui/Button.astro';
     will-change: transform;
   }
 
+  /* Ken Burns: slow zoom over 25s */
+  .hero__img-wrap img.ken-burns {
+    animation: kenBurns 25s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenBurns {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.08) translate(-1%, -1.5%);
+    }
+  }
+
+  /* Gradient overlay — cinematic */
   .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.15) 0%,
-      rgba(0, 0, 0, 0.25) 40%,
-      rgba(0, 0, 0, 0.65) 100%
-    );
+    background:
+      linear-gradient(180deg,
+        rgba(5, 5, 5, 0.25) 0%,
+        rgba(5, 5, 5, 0.1) 30%,
+        rgba(5, 5, 5, 0.15) 50%,
+        rgba(5, 5, 5, 0.55) 80%,
+        rgba(5, 5, 5, 0.8) 100%
+      );
+    z-index: 2;
   }
 
+  /* Vignette — darkens edges for cinematic depth */
+  .hero__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      transparent 0%,
+      rgba(5, 5, 5, 0.4) 100%
+    );
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* --- Floating Particles (subtle gold dust) --- */
+  .hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(198, 168, 108, 0.35);
+    animation: particleFloat linear infinite;
+  }
+
+  .particle--1 { left: 15%; top: 80%; width: 2px; height: 2px; animation-duration: 18s; animation-delay: 0s; }
+  .particle--2 { left: 35%; top: 90%; animation-duration: 22s; animation-delay: 3s; }
+  .particle--3 { left: 60%; top: 85%; width: 2px; height: 2px; animation-duration: 20s; animation-delay: 7s; }
+  .particle--4 { left: 80%; top: 95%; animation-duration: 25s; animation-delay: 2s; }
+  .particle--5 { left: 50%; top: 88%; width: 4px; height: 4px; animation-duration: 30s; animation-delay: 10s; opacity: 0.2; }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(30px);
+      opacity: 0;
+    }
+  }
+
+  /* --- Content Layer --- */
   .hero__content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     text-align: center;
     padding: 0 1.5rem;
     max-width: 900px;
+    will-change: transform, opacity;
   }
 
+  /* Decorative line */
+  .hero__line {
+    width: 1px;
+    height: 3rem;
+    background: rgba(198, 168, 108, 0.5);
+    margin: 0 auto 1.5rem;
+  }
+
+  /* Eyebrow */
   .hero__eyebrow {
     display: inline-block;
     font-family: 'Inter', sans-serif;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 400;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.75rem;
   }
 
+  /* Title — each line reveals independently */
   .hero__title {
+    margin: 0 0 1.75rem;
+    overflow: hidden;
+  }
+
+  .hero__title-line {
+    display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(3.25rem, 9vw, 7rem);
     font-weight: 400;
     line-height: 1.05;
     color: #fff;
-    margin: 0 0 1.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
+  /* Subtitle */
   .hero__subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.9375rem, 1.8vw, 1.1875rem);
     font-weight: 300;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.75);
-    max-width: 560px;
-    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 520px;
+    margin: 0 auto 2.75rem;
   }
 
+  /* Buttons */
   .hero__actions {
     display: flex;
     gap: 1rem;
@@ -119,41 +336,155 @@ import Button from '../ui/Button.astro';
     flex-wrap: wrap;
   }
 
-  .hero__scroll-indicator {
+  /* --- Text Reveal Animation System --- */
+  .hero-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero__title-line.hero-reveal {
+    transform: translateY(100%);
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero__line.hero-reveal {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  }
+
+  .hero__line.hero-reveal.is-revealed {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  /* --- Scroll Indicator --- */
+  .hero__scroll {
     position: absolute;
-    bottom: 2rem;
+    bottom: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.5);
+    gap: 0.75rem;
+    will-change: opacity;
   }
 
-  .hero__scroll-indicator span {
+  .hero__scroll-line {
+    width: 1px;
+    height: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .hero__scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(198, 168, 108, 0.6);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { top: -100%; }
+    50% { top: 100%; }
+    100% { top: 100%; }
+  }
+
+  .hero__scroll-text {
     font-family: 'Inter', sans-serif;
-    font-size: 0.6875rem;
-    letter-spacing: 0.15em;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
   }
 
-  .hero__scroll-indicator svg {
-    animation: bounceDown 2s ease-in-out infinite;
+  /* --- Side Decorative Text --- */
+  .hero__side-text {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: rotate(90deg) translateX(-50%);
+    transform-origin: center;
+    z-index: 10;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5625rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
   }
 
-  @keyframes bounceDown {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
+  /* --- Responsive --- */
   @media (max-width: 768px) {
     .hero {
       min-height: 100svh;
     }
-    .hero__bg img {
+
+    .hero__img-wrap img {
       object-position: center center;
+    }
+
+    .hero__side-text {
+      display: none;
+    }
+
+    .hero__line {
+      height: 2rem;
+    }
+
+    .hero__vignette {
+      background: radial-gradient(
+        ellipse 90% 70% at 50% 50%,
+        transparent 0%,
+        rgba(5, 5, 5, 0.5) 100%
+      );
+    }
+  }
+
+  /* --- Reduced Motion --- */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__img-wrap img.ken-burns {
+      animation: none;
+    }
+
+    .particle {
+      animation: none;
+      display: none;
+    }
+
+    .hero__scroll-line::after {
+      animation: none;
+    }
+
+    .hero-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .hero__title-line.hero-reveal {
+      transform: none;
+    }
+
+    .hero__line.hero-reveal {
+      transform: none;
     }
   }
 </style>
