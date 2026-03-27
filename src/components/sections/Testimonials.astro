@@ -1,0 +1,256 @@
+---
+import { reviews } from '../../data/reviews';
+---
+
+<section class="testimonials">
+  <div class="testimonials__container">
+    <div class="testimonials__header fade-up">
+      <span class="testimonials__eyebrow">Våra Gäster</span>
+      <h2 class="testimonials__title">Upplevelser att minnas</h2>
+      <p class="testimonials__meta">
+        <span class="testimonials__stars" aria-label="4.8 av 5 stjärnor">
+          {[1,2,3,4,5].map((i) => (
+            <svg class={`testimonials__star ${i === 5 ? 'testimonials__star--partial' : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          ))}
+        </span>
+        <span>4.8 av 5 &middot; 884 omdömen</span>
+      </p>
+    </div>
+
+    <div class="testimonials__track">
+      <div class="testimonials__scroll">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <div class="review-card__quote" aria-hidden="true">&ldquo;</div>
+            <blockquote class="review-card__text">{review.text}</blockquote>
+            <footer class="review-card__footer">
+              <span class="review-card__name">{review.name}</span>
+              <span class="review-card__source">
+                {review.source === 'google' ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-label="Google">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#00AF87" aria-label="TripAdvisor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="#00AF87" stroke-width="2"/>
+                    <circle cx="8.5" cy="12" r="2" fill="#00AF87"/>
+                    <circle cx="15.5" cy="12" r="2" fill="#00AF87"/>
+                    <path d="M12 7c-3 0-5.5 1.5-7 3.5h2.5M12 7c3 0 5.5 1.5 7 3.5h-2.5" stroke="#00AF87" stroke-width="1.5" fill="none"/>
+                  </svg>
+                )}
+                {review.source === 'google' ? 'Google' : 'TripAdvisor'}
+              </span>
+            </footer>
+          </article>
+        ))}
+      </div>
+      <div class="testimonials__fade testimonials__fade--left" aria-hidden="true"></div>
+      <div class="testimonials__fade testimonials__fade--right" aria-hidden="true"></div>
+    </div>
+
+    <div class="testimonials__link-wrap fade-up">
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g189838-d21511925-Reviews-GASTRO_nome_Mat_Bar-Lund_Skane_County.html" class="testimonials__link" target="_blank" rel="noopener noreferrer">
+        Läs alla omdömen på TripAdvisor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background: var(--color-bg, #FAFAF9);
+    overflow: hidden;
+  }
+
+  .testimonials__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .testimonials__header {
+    text-align: center;
+    padding: 0 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .testimonials__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1rem;
+  }
+
+  .testimonials__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 1rem;
+  }
+
+  .testimonials__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0;
+  }
+
+  .testimonials__stars {
+    display: flex;
+    gap: 2px;
+    color: #C6A86C;
+  }
+
+  .testimonials__star--partial {
+    opacity: 0.4;
+  }
+
+  .testimonials__track {
+    position: relative;
+    padding: 0 1.5rem;
+  }
+
+  .testimonials__scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+  }
+
+  .testimonials__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4rem;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .testimonials__fade--left {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-bg, #FAFAF9) 0%, transparent 100%);
+  }
+
+  .testimonials__fade--right {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-bg, #FAFAF9) 0%, transparent 100%);
+  }
+
+  .review-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 300px;
+    scroll-snap-align: start;
+    background: #fff;
+    border: 1px solid var(--color-border, #E8E5E0);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .review-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .review-card__quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--color-accent, #8B6F47);
+    opacity: 0.3;
+    margin-bottom: -0.5rem;
+  }
+
+  .review-card__text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 1.5rem;
+    border: none;
+    padding: 0;
+  }
+
+  .review-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .review-card__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text, #1A1A1A);
+  }
+
+  .review-card__source {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #6B6B6B);
+  }
+
+  .testimonials__link-wrap {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .testimonials__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent, #8B6F47);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .testimonials__link:hover {
+    gap: 0.625rem;
+  }
+
+  @media (max-width: 900px) {
+    .review-card {
+      flex: 0 0 calc(50% - 0.75rem);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .review-card {
+      flex: 0 0 calc(100% - 1rem);
+      min-width: 260px;
+    }
+  }
+</style>

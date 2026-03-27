@@ -1,0 +1,110 @@
+---
+const images = [
+  { src: '/images/640820505_18084012917349192_4427101478650068827_n.jpg', alt: 'Antipasti-upplägg' },
+  { src: '/images/625893750_18082235780349192_8693356649389373423_n.jpg', alt: 'Servering av rätter' },
+  { src: '/images/652511994_18086431202349192_4627669848014543762_n.jpg', alt: 'Cocktail på uteservering' },
+  { src: '/images/654113767_18086540393349192_9128637126260060053_n.jpg', alt: 'Vintoast framför konst' },
+  { src: '/images/642967107_18084581576349192_6735269975905024431_n.jpg', alt: 'Kristallkrona detalj' },
+  { src: '/images/649240658_18085403783349192_2234633830525792080_n.jpg', alt: 'Rödvinstoast' },
+];
+---
+
+<section class="instagram">
+  <div class="instagram__header fade-up">
+    <a href="https://www.instagram.com/gastronomelund" target="_blank" rel="noopener noreferrer" class="instagram__heading">
+      Följ oss
+      <span class="instagram__handle">@gastronomelund</span>
+    </a>
+  </div>
+
+  <div class="instagram__grid">
+    {images.map((img) => (
+      <a href="https://www.instagram.com/gastronomelund" target="_blank" rel="noopener noreferrer" class="instagram__item" aria-label={`Se på Instagram: ${img.alt}`}>
+        <img src={img.src} alt={img.alt} loading="lazy" />
+        <div class="instagram__overlay">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .instagram {
+    background: var(--color-bg, #FAFAF9);
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .instagram__header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .instagram__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--color-text, #1A1A1A);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .instagram__heading:hover {
+    color: var(--color-accent, #8B6F47);
+  }
+
+  .instagram__handle {
+    color: var(--color-accent, #8B6F47);
+  }
+
+  .instagram__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+  }
+
+  .instagram__item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: block;
+  }
+
+  .instagram__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+  }
+
+  .instagram__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .instagram__item:hover img {
+    transform: scale(1.06);
+  }
+
+  .instagram__item:hover .instagram__overlay {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .instagram__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

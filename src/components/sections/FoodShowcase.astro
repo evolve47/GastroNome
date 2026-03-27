@@ -1,0 +1,209 @@
+---
+---
+
+<section class="showcase">
+  <div class="showcase__header fade-up">
+    <span class="showcase__eyebrow">Från Vårt Kök</span>
+    <h2 class="showcase__title">Smakupplevelser utöver det vanliga</h2>
+  </div>
+
+  <div class="showcase__grid">
+    <a href="/menyer" class="showcase__item showcase__item--tall fade-up" aria-label="Vitello Tonnato">
+      <img src="/images/gastronome-16-scaled.jpeg" alt="Vitello tonnato med kapris och örter" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Vitello Tonnato</span>
+      </div>
+    </a>
+
+    <a href="/menyer" class="showcase__item fade-up delay-1" aria-label="Pizza Margherita">
+      <img src="/images/fc037b4ad21057456dde5a40cd6d09f2-thumb_large.webp" alt="Neapolitansk margherita med färsk basilika" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Pizza Margherita</span>
+      </div>
+    </a>
+
+    <a href="/menyer" class="showcase__item fade-up delay-2" aria-label="Polpo alla Griglia">
+      <img src="/images/polpo-alla-griglia-grilled.jpg" alt="Grillad bläckfisk med tomater och örter" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Polpo alla Griglia</span>
+      </div>
+    </a>
+
+    <a href="/menyer" class="showcase__item fade-up delay-1" aria-label="Pizza & Vin">
+      <img src="/images/unnamed.webp" alt="Gourmetpizza med prosciutto och vin i restaurangmiljö" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Pizza & Vin</span>
+      </div>
+    </a>
+
+    <a href="/menyer" class="showcase__item fade-up delay-2" aria-label="Craft Cocktails">
+      <img src="/images/640032801_18084581579349192_488592742248204250_n.jpg" alt="Elegant rosa cocktail i coupeglas" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Craft Cocktails</span>
+      </div>
+    </a>
+
+    <a href="/menyer" class="showcase__item fade-up delay-3" aria-label="Pane Grigliato">
+      <img src="/images/649490008_18085290014349192_920750879952780296_n.jpg" alt="Grillat bröd med olivolja" loading="lazy" />
+      <div class="showcase__overlay">
+        <span class="showcase__dish">Pane Grigliato</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="showcase__cta fade-up">
+    <a href="/menyer" class="showcase__link">
+      Se hela menyn
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .showcase {
+    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    background: var(--color-bg, #FAFAF9);
+  }
+
+  .showcase__header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .showcase__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1rem;
+  }
+
+  .showcase__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-text, #1A1A1A);
+    margin: 0;
+  }
+
+  .showcase__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .showcase__item {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .showcase__item--tall {
+    grid-row: span 2;
+  }
+
+  .showcase__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .showcase__item:not(.showcase__item--tall) img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .showcase__item--tall img {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .showcase__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .showcase__dish {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.375rem 0.875rem;
+    border-radius: 2rem;
+  }
+
+  .showcase__item:hover img {
+    transform: scale(1.05);
+  }
+
+  .showcase__item:hover .showcase__overlay {
+    opacity: 1;
+  }
+
+  .showcase__cta {
+    text-align: center;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .showcase__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-accent, #8B6F47);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .showcase__link:hover {
+    gap: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .showcase__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .showcase__item--tall {
+      grid-row: span 1;
+    }
+
+    .showcase__item--tall img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .showcase__overlay {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .showcase__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

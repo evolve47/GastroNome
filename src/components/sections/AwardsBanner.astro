@@ -1,0 +1,118 @@
+---
+---
+
+<section class="awards" aria-label="Utmärkelser">
+  <div class="awards__inner">
+    <div class="awards__item fade-up">
+      <img src="/images/pizza-champion-cup.png" alt="Pizza SM trophy" width="40" height="40" loading="lazy" />
+      <div>
+        <span class="awards__label">Vinnare</span>
+        <span class="awards__value">Pizza SM 2023 & 2024</span>
+      </div>
+    </div>
+
+    <div class="awards__divider" aria-hidden="true"></div>
+
+    <div class="awards__item fade-up delay-1">
+      <svg class="awards__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+      <div>
+        <span class="awards__label">TripAdvisor</span>
+        <span class="awards__value">Travellers' Choice 2025</span>
+      </div>
+    </div>
+
+    <div class="awards__divider" aria-hidden="true"></div>
+
+    <div class="awards__item fade-up delay-2">
+      <span class="awards__rating">4.8</span>
+      <div>
+        <span class="awards__label">#1 av 265 restauranger</span>
+        <span class="awards__value">i Lund · 884 omdömen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .awards {
+    background: var(--color-bg-dark, #0F0F0F);
+    padding: 1.75rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .awards__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+
+  .awards__item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .awards__item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .awards__icon {
+    flex-shrink: 0;
+    color: #C6A86C;
+  }
+
+  .awards__rating {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #C6A86C;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .awards__label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.125rem;
+  }
+
+  .awards__value {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .awards__divider {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .awards__inner {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .awards__divider {
+      width: 3rem;
+      height: 1px;
+    }
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gastronome.se/sitemap-index.xml

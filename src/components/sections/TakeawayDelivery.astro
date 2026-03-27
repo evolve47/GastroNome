@@ -1,0 +1,139 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="takeaway">
+  <div class="takeaway__container">
+    <div class="takeaway__image slide-in-left">
+      <img
+        src="/images/gastronome_hamtning-764x1024-1.jpg"
+        alt="Personal med takeaway-kassar från GASTRO|nome"
+        loading="lazy"
+        width="480"
+        height="640"
+      />
+    </div>
+
+    <div class="takeaway__content slide-in-right">
+      <span class="takeaway__eyebrow">Avhämtning & Hemleverans</span>
+      <h2 class="takeaway__title">Njut hemma</h2>
+      <p class="takeaway__text">
+        Ta med dig GASTRO|nome-upplevelsen hem. Beställ online för avhämtning
+        eller hemleverans — samma kvalitet, samma kärlek.
+      </p>
+      <div class="takeaway__actions">
+        <Button href="https://eatsmart.se/gastronome" variant="primary">Beställ Online</Button>
+        <Button href="tel:046390000" variant="outline">Ring Oss: 046-390000</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .takeaway {
+    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    background: #F4F2EE;
+  }
+
+  .takeaway__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .takeaway__image {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  }
+
+  .takeaway__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .takeaway__content {
+    max-width: 480px;
+  }
+
+  .takeaway__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .takeaway__eyebrow::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 2rem;
+    height: 1px;
+    background: var(--color-accent, #8B6F47);
+  }
+
+  .takeaway__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 1.25rem;
+  }
+
+  .takeaway__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0 0 2rem;
+  }
+
+  .takeaway__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .takeaway__container {
+      grid-template-columns: 1fr;
+    }
+
+    .takeaway__image {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .takeaway__content {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .takeaway__eyebrow {
+      padding-left: 0;
+    }
+
+    .takeaway__eyebrow::before {
+      display: none;
+    }
+
+    .takeaway__actions {
+      justify-content: center;
+    }
+  }
+</style>

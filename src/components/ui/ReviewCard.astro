@@ -1,0 +1,176 @@
+---
+interface Props {
+  name: string;
+  text: string;
+  rating: number;
+  source: string;
+}
+
+const { name, text, rating, source } = Astro.props;
+
+/* Generate filled dots for rating (max 5) */
+const dots = Array.from({ length: 5 }, (_, i) => i < rating);
+
+/* Capitalize source name */
+const sourceName = source.charAt(0).toUpperCase() + source.slice(1);
+---
+
+<article class="review-card reveal">
+  <!-- Opening quote mark -->
+  <span class="review-card__quote" aria-hidden="true">&ldquo;</span>
+
+  <!-- Review text -->
+  <blockquote class="review-card__text">
+    <p>{text}</p>
+  </blockquote>
+
+  <!-- Footer: name, source, rating -->
+  <footer class="review-card__footer">
+    <div class="review-card__meta">
+      <cite class="review-card__name">{name}</cite>
+      <span class="review-card__source">{sourceName}</span>
+    </div>
+    <div class="review-card__rating" role="img" aria-label={`Betyg: ${rating} av 5`}>
+      {dots.map((filled) => (
+        <span class:list={['review-card__dot', { 'is-filled': filled }]} />
+      ))}
+    </div>
+  </footer>
+</article>
+
+<style>
+  .review-card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border-subtle, #e8e5e0);
+    border-radius: var(--radius-xl, 16px);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    padding-top: clamp(2.5rem, 4vw, 3.5rem);
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, 0 8px 32px rgba(0, 0, 0, 0.1));
+  }
+
+  /* ── Quote mark ── */
+  .review-card__quote {
+    position: absolute;
+    top: 0.75rem;
+    left: clamp(1.5rem, 3vw, 2.25rem);
+    font-family: var(--font-serif, 'Cormorant Garamond', serif);
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-accent-warm, #8b6f47);
+    opacity: 0.35;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ── Text ── */
+  .review-card__text {
+    font-family: var(--font-serif, 'Cormorant Garamond', serif);
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--color-text-primary, #1a1a1a);
+    margin: 0;
+    flex: 1;
+  }
+
+  .review-card__text p {
+    margin: 0;
+  }
+
+  /* ── Footer ── */
+  .review-card__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-subtle, #e8e5e0);
+  }
+
+  .review-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .review-card__name {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--color-text-primary, #1a1a1a);
+    letter-spacing: 0.01em;
+  }
+
+  .review-card__source {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary, #6b6b6b);
+  }
+
+  /* ── Rating dots ── */
+  .review-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .review-card__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-border-subtle, #e8e5e0);
+    transition: background-color 0.3s ease;
+  }
+
+  .review-card__dot.is-filled {
+    background-color: var(--color-accent-warm, #8b6f47);
+  }
+
+  /* ── Dark section override ── */
+  :global(.bg-dark) .review-card {
+    background-color: var(--color-bg-dark-elevated, #1a1a1a);
+    border-color: var(--color-border-dark, #2a2a2a);
+  }
+
+  :global(.bg-dark) .review-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.bg-dark) .review-card__text {
+    color: var(--color-text-on-dark, #f5f5f4);
+  }
+
+  :global(.bg-dark) .review-card__name {
+    color: var(--color-text-on-dark, #f5f5f4);
+  }
+
+  :global(.bg-dark) .review-card__source {
+    color: var(--color-text-on-dark-secondary, #a8a8a8);
+  }
+
+  :global(.bg-dark) .review-card__footer {
+    border-top-color: var(--color-border-dark, #2a2a2a);
+  }
+
+  :global(.bg-dark) .review-card__dot {
+    background-color: var(--color-border-dark, #2a2a2a);
+  }
+</style>

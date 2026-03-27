@@ -1,0 +1,194 @@
+---
+---
+
+<section class="concept" id="om-oss">
+  <div class="concept__container">
+    <div class="concept__text slide-in-left">
+      <span class="concept__eyebrow">Vår Filosofi</span>
+      <h2 class="concept__title">Där Italien<br />möter Sverige</h2>
+      <p class="concept__body">
+        En oförglömlig kväll handlar om den perfekta balansen mellan utsökt mat och dryck,
+        en ombonad atmosfär och varm personlig service.
+      </p>
+      <p class="concept__body">
+        Varje besök på GASTRO|nome ska vara en upplevelse — oavsett om du njuter av en middag,
+        delar en pizza med vänner eller bara vilar med ett glas vin. Hos oss är du alltid varmt välkommen.
+      </p>
+      <a href="/menyer" class="concept__link">
+        Utforska vår meny
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="concept__images slide-in-right">
+      <div class="concept__img-primary">
+        <img
+          src="/images/restaurant-floor-1.jpg"
+          alt="GASTRO|nome bar med kristallkrona och gulddetaljer"
+          loading="lazy"
+          width="640"
+          height="420"
+        />
+      </div>
+      <div class="concept__img-secondary">
+        <img
+          src="/images/620970021_18080658887349192_8680935297927727515_n.jpg"
+          alt="Elegant matsal med kristallkrona och uppdukat bord"
+          loading="lazy"
+          width="320"
+          height="240"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .concept {
+    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    background: var(--color-bg, #FAFAF9);
+  }
+
+  .concept__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .concept__text {
+    max-width: 520px;
+  }
+
+  .concept__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .concept__eyebrow::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 2rem;
+    height: 1px;
+    background: var(--color-accent, #8B6F47);
+  }
+
+  .concept__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .concept__body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0 0 1.25rem;
+  }
+
+  .concept__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-accent, #8B6F47);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.3s ease;
+  }
+
+  .concept__link:hover {
+    gap: 0.875rem;
+  }
+
+  .concept__link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .concept__link:hover svg {
+    transform: translateX(3px);
+  }
+
+  .concept__images {
+    position: relative;
+  }
+
+  .concept__img-primary {
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .concept__img-primary img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .concept__img-primary:hover img {
+    transform: scale(1.02);
+  }
+
+  .concept__img-secondary {
+    position: absolute;
+    bottom: -2.5rem;
+    right: -1.5rem;
+    width: 55%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 4px solid var(--color-bg, #FAFAF9);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .concept__img-secondary img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .concept__container {
+      grid-template-columns: 1fr;
+    }
+
+    .concept__images {
+      order: -1;
+      margin-bottom: 1rem;
+    }
+
+    .concept__img-secondary {
+      right: 0;
+      bottom: -1.5rem;
+      width: 50%;
+    }
+
+    .concept__text {
+      max-width: 100%;
+    }
+  }
+</style>

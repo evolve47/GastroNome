@@ -1,0 +1,482 @@
+---
+import { siteConfig } from '@data/site';
+
+const currentPath = Astro.url.pathname;
+
+/* Separate "Boka Bord" as the CTA, rest as regular nav links */
+const ctaLink = siteConfig.nav.find((l) => l.href === '/boka-bord') ?? {
+  label: 'Boka Bord',
+  href: '/boka-bord',
+};
+const navLinks = siteConfig.nav.filter((l) => l.href !== '/boka-bord');
+---
+
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar__inner">
+    <!-- Logo -->
+    <a href="/" class="navbar__logo" aria-label="Gastronome — Hem">
+      <span class="navbar__logo-text">
+        GASTRO<span class="navbar__logo-pipe">|</span>nome
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="navbar__nav" aria-label="Huvudnavigation">
+      <ul class="navbar__links">
+        {navLinks.map((link) => {
+          const isActive =
+            link.href === '/'
+              ? currentPath === '/'
+              : currentPath.startsWith(link.href);
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={['navbar__link', { 'is-active': isActive }]}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a href={ctaLink.href} class="navbar__cta">
+      {ctaLink.label}
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="navbar__hamburger"
+      id="nav-toggle"
+      type="button"
+      aria-label="Öppna meny"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="navbar__hamburger-line" aria-hidden="true"></span>
+      <span class="navbar__hamburger-line" aria-hidden="true"></span>
+      <span class="navbar__hamburger-line" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div class="navbar__mobile" id="mobile-menu" aria-hidden="true">
+    <nav class="navbar__mobile-nav" aria-label="Mobilnavigation">
+      <ul class="navbar__mobile-links">
+        {navLinks.map((link) => {
+          const isActive =
+            link.href === '/'
+              ? currentPath === '/'
+              : currentPath.startsWith(link.href);
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={['navbar__mobile-link', { 'is-active': isActive }]}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+        <li>
+          <a href={ctaLink.href} class="navbar__mobile-cta">
+            {ctaLink.label}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile footer info -->
+    <div class="navbar__mobile-footer">
+      <p class="navbar__mobile-address">
+        {siteConfig.address.street}, {siteConfig.address.zip} {siteConfig.address.city}
+      </p>
+      <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} class="navbar__mobile-phone">
+        {siteConfig.phone}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!navbar || !toggle || !mobileMenu) return;
+
+    let isOpen = false;
+    let lastScroll = 0;
+
+    /* ── Scroll: frosted glass + shrink ── */
+    function onScroll() {
+      const y = window.scrollY;
+      if (y > 40) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
+      lastScroll = y;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ── Mobile toggle ── */
+    toggle.addEventListener('click', function () {
+      isOpen = !isOpen;
+      navbar.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      document.body.classList.toggle('no-scroll', isOpen);
+
+      toggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Stäng meny' : 'Öppna meny'
+      );
+    });
+
+    /* Close on link click */
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (isOpen) {
+          isOpen = false;
+          navbar.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('no-scroll');
+          toggle.setAttribute('aria-label', 'Öppna meny');
+        }
+      });
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen) {
+        toggle.click();
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* ============================================================
+     Navbar — Frosted-glass, Apple-style
+     ============================================================ */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav, 100);
+    transition:
+      background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Scrolled state: frosted glass */
+  .navbar.is-scrolled {
+    background: rgba(250, 250, 249, 0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container-max, 1400px);
+    margin-inline: auto;
+    padding-inline: var(--container-padding, clamp(1.25rem, 4vi, 3rem));
+    padding-block: 1.5rem;
+    transition: padding-block 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar.is-scrolled .navbar__inner {
+    padding-block: 0.75rem;
+  }
+
+  /* ── Logo ── */
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 2;
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-serif, 'Cormorant Garamond', serif);
+    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary, #1a1a1a);
+    transition: color 0.3s ease;
+  }
+
+  .navbar__logo-pipe {
+    color: var(--color-accent-warm, #8b6f47);
+    margin-inline: 1px;
+  }
+
+  /* ── Desktop Nav ── */
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar__link {
+    position: relative;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 450;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary, #6b6b6b);
+    text-decoration: none;
+    padding-block: 0.25rem;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background-color: var(--color-accent-warm, #8b6f47);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar__link:hover {
+    color: var(--color-text-primary, #1a1a1a);
+  }
+
+  .navbar__link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .navbar__link.is-active {
+    color: var(--color-text-primary, #1a1a1a);
+  }
+
+  .navbar__link.is-active::after {
+    transform: scaleX(1);
+    background-color: var(--color-text-primary, #1a1a1a);
+  }
+
+  /* ── Desktop CTA ── */
+  .navbar__cta {
+    display: none;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--color-accent-warm, #8b6f47);
+    padding: 0.625rem 1.75rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition:
+      background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar__cta:hover {
+    background-color: #76593a;
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.25);
+  }
+
+  .navbar__cta:active {
+    transform: scale(0.97);
+  }
+
+  /* ── Hamburger ── */
+  .navbar__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0;
+  }
+
+  .navbar__hamburger-line {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background-color: var(--color-text-primary, #1a1a1a);
+    border-radius: 2px;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease,
+      background-color 0.3s ease;
+  }
+
+  /* Hamburger → X animation */
+  .navbar.is-open .navbar__hamburger-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .navbar.is-open .navbar__hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .navbar.is-open .navbar__hamburger-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* ── Mobile Menu ── */
+  .navbar__mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 420px;
+    background: rgba(250, 250, 249, 0.96);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2.5rem 3rem;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    overflow-y: auto;
+  }
+
+  .navbar.is-open .navbar__mobile {
+    transform: translateX(0);
+  }
+
+  .navbar__mobile-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar__mobile-link {
+    display: block;
+    font-family: var(--font-serif, 'Cormorant Garamond', serif);
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    font-weight: 400;
+    color: var(--color-text-primary, #1a1a1a);
+    text-decoration: none;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--color-border-subtle, #e8e5e0);
+    transition:
+      color 0.3s ease,
+      padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .navbar__mobile-link:hover {
+    color: var(--color-accent-warm, #8b6f47);
+    padding-left: 0.5rem;
+  }
+
+  .navbar__mobile-link.is-active {
+    color: var(--color-accent-warm, #8b6f47);
+  }
+
+  .navbar__mobile-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--color-accent-warm, #8b6f47);
+    padding: 0.875rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  .navbar__mobile-cta:hover {
+    background-color: #76593a;
+  }
+
+  .navbar__mobile-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .navbar__mobile-address {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary, #6b6b6b);
+    line-height: 1.5;
+  }
+
+  .navbar__mobile-phone {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary, #6b6b6b);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .navbar__mobile-phone:hover {
+    color: var(--color-accent-warm, #8b6f47);
+  }
+
+  /* ── Desktop breakpoint ── */
+  @media (min-width: 1024px) {
+    .navbar__nav {
+      display: block;
+    }
+
+    .navbar__cta {
+      display: inline-flex;
+    }
+
+    .navbar__hamburger {
+      display: none;
+    }
+
+    .navbar__mobile {
+      display: none;
+    }
+  }
+</style>

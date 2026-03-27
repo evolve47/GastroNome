@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Beställ Online — GASTRO|nome Mat & Bar | Avhämtning & Hemleverans i Lund"
+  description="Beställ GASTRO|nome's prisbelönta mat online. Avhämtning eller hemleverans i Lund. Pizzor, pasta, förrätter och mer. Beställ via EatSmart."
+>
+  <section class="order">
+    <div class="order__container">
+      <div class="order__content fade-up">
+        <span class="order__eyebrow">Beställ Online</span>
+        <h1 class="order__title">GASTRO|nome<br />till dörren</h1>
+        <p class="order__text">
+          Njut av samma prisbelönta mat hemma. Vi erbjuder avhämtning direkt från restaurangen
+          och hemleverans via vår partner. Samma kvalitet, samma kärlek — rakt hem till dig.
+        </p>
+
+        <div class="order__options">
+          <a href="https://eatsmart.se/gastronome" target="_blank" rel="noopener noreferrer" class="order__card">
+            <div class="order__card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+              </svg>
+            </div>
+            <h2 class="order__card-title">Beställ via EatSmart</h2>
+            <p class="order__card-desc">Avhämtning och hemleverans. Se meny, välj rätter och betala online.</p>
+            <span class="order__card-cta">
+              Gå till EatSmart
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </span>
+          </a>
+
+          <a href="tel:046390000" class="order__card">
+            <div class="order__card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+            </div>
+            <h2 class="order__card-title">Ring & Beställ</h2>
+            <p class="order__card-desc">Föredrar du att beställa per telefon? Ring oss så förbereder vi din order.</p>
+            <span class="order__card-cta">046-390000</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="order__image fade-up">
+        <img src="/images/626288527_18084908900349192_8396846120285646429_n.jpg" alt="GASTRO|nome takeaway-lådor" loading="lazy" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .order {
+    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    background: var(--color-bg, #FAFAF9);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .order__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  .order__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1.25rem;
+  }
+
+  .order__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 1.25rem;
+  }
+
+  .order__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0 0 2.5rem;
+    max-width: 500px;
+  }
+
+  .order__options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .order__card {
+    padding: 1.75rem;
+    background: #fff;
+    border: 1px solid var(--color-border, #E8E5E0);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    display: block;
+  }
+
+  .order__card:hover {
+    border-color: var(--color-accent, #8B6F47);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .order__card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    background: rgba(139, 111, 71, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1rem;
+  }
+
+  .order__card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 0.5rem;
+  }
+
+  .order__card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0 0 1rem;
+  }
+
+  .order__card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent, #8B6F47);
+  }
+
+  .order__image {
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .order__image img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .order__container { grid-template-columns: 1fr; }
+    .order__image { max-width: 400px; margin: 0 auto; }
+  }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
+</style>
