@@ -17,12 +17,12 @@ export const ui = {
 
     // ── Navigation hrefs ──
     'href.hem': '/',
-    'href.evenemang': '/evenemang',
-    'href.menyer': '/menyer',
-    'href.boka-bord': '/boka-bord',
-    'href.presentkort': '/presentkort',
-    'href.stora-sallskap': '/stora-sallskap',
-    'href.bestall-online': '/bestall-online',
+    'href.evenemang': '/evenemang/',
+    'href.menyer': '/menyer/',
+    'href.boka-bord': '/boka-bord/',
+    'href.presentkort': '/presentkort/',
+    'href.stora-sallskap': '/stora-sallskap/',
+    'href.bestall-online': '/bestall-online/',
 
     // ── Language switcher ──
     'lang.code': 'EN',
@@ -242,12 +242,12 @@ export const ui = {
 
     // ── Navigation hrefs ──
     'href.hem': '/en/',
-    'href.evenemang': '/en/events',
-    'href.menyer': '/en/menus',
-    'href.boka-bord': '/en/book-a-table',
-    'href.presentkort': '/en/gift-cards',
-    'href.stora-sallskap': '/en/large-groups',
-    'href.bestall-online': '/en/order-online',
+    'href.evenemang': '/en/events/',
+    'href.menyer': '/en/menus/',
+    'href.boka-bord': '/en/book-a-table/',
+    'href.presentkort': '/en/gift-cards/',
+    'href.stora-sallskap': '/en/large-groups/',
+    'href.bestall-online': '/en/order-online/',
 
     // ── Language switcher ──
     'lang.code': 'SV',

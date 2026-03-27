@@ -50,12 +50,14 @@ const hoursData = siteConfig.hours.map((h, i) => ({
       <div class="footer__col reveal">
         <h3 class="footer__col-title">{t(lang, 'footer.visitUs')}</h3>
         <address class="footer__address">
-          <p>{siteConfig.address.street}</p>
-          <p>{siteConfig.address.zip} {siteConfig.address.city}</p>
+          <a href="https://maps.google.com/?q=Bangatan+6,+222+21+Lund,+Sweden" target="_blank" rel="noopener noreferrer" class="footer__address-link">
+            <p>{siteConfig.address.street}</p>
+            <p>{siteConfig.address.zip} {siteConfig.address.city}</p>
+          </a>
         </address>
         <div class="footer__contact-links">
           <a
-            href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+            href="tel:+46-46-390000"
             class="footer__link"
           >
             {siteConfig.phone}
@@ -255,6 +257,16 @@ const hoursData = siteConfig.hours.map((h, i) => ({
     line-height: 1.7;
     color: var(--color-text-on-dark-secondary, #a8a8a8);
     margin-bottom: 1rem;
+  }
+
+  .footer__address-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .footer__address-link:hover {
+    color: var(--color-text-on-dark, #f5f5f4);
   }
 
   .footer__contact-links {

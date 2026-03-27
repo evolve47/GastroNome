@@ -25,9 +25,13 @@ const amounts = [500, 750, 1000, 1500, 2000, 3000];
   <section class="gc">
     <div class="gc__container">
 
-      <!-- Left: interactive card builder -->
+      <!-- Left: intro copy + interactive card builder -->
       <div class="gc__builder fade-up">
-        <h2 class="gc__builder-title">Skapa ditt presentkort</h2>
+        <h2 class="gc__builder-title">Perfekt present till alla tillfällen</h2>
+        <p class="gc__intro">
+          Letar du efter den perfekta presenten? Ett presentkort till GASTRO|nome ger mottagaren
+          friheten att njuta av prisbelönt mat och dryck — när det passar dem bäst.
+        </p>
 
         <!-- Step 1: Amount -->
         <div class="gc__step">
@@ -255,7 +259,8 @@ const amounts = [500, 750, 1000, 1500, 2000, 3000];
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   }
 
-  .gc__builder-title { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 500; color: var(--color-text, #1A1A1A); margin: 0 0 2rem; }
+  .gc__builder-title { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 500; color: var(--color-text, #1A1A1A); margin: 0 0 0.75rem; }
+  .gc__intro { font-family: 'Inter', sans-serif; font-size: 0.9375rem; line-height: 1.7; color: var(--color-text-secondary, #6B6B6B); margin: 0 0 2rem; }
 
   /* Steps */
   .gc__step { display: flex; gap: 1rem; margin-bottom: 2rem; }

@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../../i18n/ui';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
+
+const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
 ---
 
 <section class="concept" id="om-oss">
@@ -14,8 +23,8 @@
         Varje besök på GASTRO|nome ska vara en upplevelse — oavsett om du njuter av en middag,
         delar en pizza med vänner eller bara vilar med ett glas vin. Hos oss är du alltid varmt välkommen.
       </p>
-      <a href="/menyer" class="concept__link">
-        Utforska vår meny
+      <a href={menuHref} class="concept__link">
+        {lang === 'en' ? 'Explore our menu' : 'Utforska vår meny'}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>

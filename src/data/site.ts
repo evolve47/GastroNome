@@ -85,11 +85,11 @@ export const siteConfig: SiteConfig = {
   },
   nav: [
     { label: 'Hem', href: '/' },
-    { label: 'Evenemang', href: '/evenemang' },
-    { label: 'Menyer', href: '/menyer' },
-    { label: 'Boka Bord', href: '/boka-bord' },
-    { label: 'Presentkort', href: '/presentkort' },
-    { label: 'Stora Sällskap', href: '/stora-sallskap' },
-    { label: 'Beställ Online', href: '/bestall-online' },
+    { label: 'Evenemang', href: '/evenemang/' },
+    { label: 'Menyer', href: '/menyer/' },
+    { label: 'Boka Bord', href: '/boka-bord/' },
+    { label: 'Presentkort', href: '/presentkort/' },
+    { label: 'Stora Sällskap', href: '/stora-sallskap/' },
+    { label: 'Beställ Online', href: '/bestall-online/' },
   ],
 };

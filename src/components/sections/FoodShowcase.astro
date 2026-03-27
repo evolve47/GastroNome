@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../../i18n/ui';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
+
+const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
 ---
 
 <section class="showcase">
@@ -9,21 +18,21 @@
 
   <div class="showcase__grid">
     <!-- Row 1: Large left + 2 stacked right -->
-    <a href="/menyer" class="showcase__item showcase__item--feature fade-up" aria-label="Vitello Tonnato">
+    <a href={menuHref} class="showcase__item showcase__item--feature fade-up" aria-label="Vitello Tonnato">
       <img src="/images/gastronome-16-scaled.jpeg" alt="Vitello tonnato med kapris och örter" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Vitello Tonnato</span>
       </div>
     </a>
 
-    <a href="/menyer" class="showcase__item fade-up delay-1" aria-label="Pizza Margherita">
+    <a href={menuHref} class="showcase__item fade-up delay-1" aria-label="Pizza Margherita">
       <img src="/images/fc037b4ad21057456dde5a40cd6d09f2-thumb_large.webp" alt="Neapolitansk margherita med färsk basilika" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Pizza Margherita</span>
       </div>
     </a>
 
-    <a href="/menyer" class="showcase__item fade-up delay-2" aria-label="Polpo alla Griglia">
+    <a href={menuHref} class="showcase__item fade-up delay-2" aria-label="Polpo alla Griglia">
       <img src="/images/polpo-alla-griglia-grilled.jpg" alt="Grillad bläckfisk med tomater och örter" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Polpo alla Griglia</span>
@@ -31,21 +40,21 @@
     </a>
 
     <!-- Row 2: 3 equal columns -->
-    <a href="/menyer" class="showcase__item fade-up" aria-label="Pizza & Vin">
+    <a href={menuHref} class="showcase__item fade-up" aria-label="Pizza & Vin">
       <img src="/images/unnamed.webp" alt="Gourmetpizza med prosciutto och vin i restaurangmiljö" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Pizza & Vin</span>
       </div>
     </a>
 
-    <a href="/menyer" class="showcase__item fade-up delay-1" aria-label="Craft Cocktails">
+    <a href={menuHref} class="showcase__item fade-up delay-1" aria-label="Craft Cocktails">
       <img src="/images/640032801_18084581579349192_488592742248204250_n.jpg" alt="Elegant rosa cocktail i coupeglas" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Craft Cocktails</span>
       </div>
     </a>
 
-    <a href="/menyer" class="showcase__item fade-up delay-2" aria-label="Pane Grigliato">
+    <a href={menuHref} class="showcase__item fade-up delay-2" aria-label="Pane Grigliato">
       <img src="/images/649490008_18085290014349192_920750879952780296_n.jpg" alt="Grillat bröd med olivolja" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Pane Grigliato</span>
@@ -53,14 +62,14 @@
     </a>
 
     <!-- Row 3: 2 new images to fill the grid -->
-    <a href="/menyer" class="showcase__item fade-up" aria-label="Antipasti">
+    <a href={menuHref} class="showcase__item fade-up" aria-label="Antipasti">
       <img src="/images/640820505_18084012917349192_4427101478650068827_n.jpg" alt="Italiensk antipasti med chark, ost och oliver" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Antipasti</span>
       </div>
     </a>
 
-    <a href="/menyer" class="showcase__item showcase__item--wide fade-up delay-1" aria-label="Interiör & Atmosfär">
+    <a href={menuHref} class="showcase__item showcase__item--wide fade-up delay-1" aria-label="Interiör & Atmosfär">
       <img src="/images/625893750_18082235780349192_8693356649389373423_n.jpg" alt="Servering av vackert upplagd rätt" loading="lazy" />
       <div class="showcase__overlay">
         <span class="showcase__dish">Hantverk i varje rätt</span>
@@ -69,8 +78,8 @@
   </div>
 
   <div class="showcase__cta fade-up">
-    <a href="/menyer" class="showcase__link">
-      Se hela menyn
+    <a href={menuHref} class="showcase__link">
+      {lang === 'en' ? 'See the full menu' : 'Se hela menyn'}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>

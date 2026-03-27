@@ -1,5 +1,15 @@
 ---
 import Button from '../ui/Button.astro';
+import type { Locale } from '../../i18n/ui';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
+
+const bookHref = lang === 'en' ? '/en/book-a-table/' : '/boka-bord/';
+const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
 ---
 
 <section class="hero" id="hero">
@@ -57,8 +67,8 @@ import Button from '../ui/Button.astro';
     </p>
 
     <div class="hero__actions hero-reveal" data-delay="950">
-      <Button href="/boka-bord" variant="primary" size="lg">Boka Bord</Button>
-      <Button href="/menyer" variant="outline" size="lg">Utforska Menyn</Button>
+      <Button href={bookHref} variant="primary" size="lg">{lang === 'en' ? 'Book a Table' : 'Boka Bord'}</Button>
+      <Button href={menuHref} variant="outline" size="lg">{lang === 'en' ? 'Explore the Menu' : 'Utforska Menyn'}</Button>
     </div>
   </div>
 
