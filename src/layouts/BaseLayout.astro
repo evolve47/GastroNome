@@ -76,6 +76,26 @@ const jsonLd = {
     bestRating: 5,
     worstRating: 1,
   },
+  review: [
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: 5 },
+      author: { '@type': 'Person', name: 'Burim' },
+      reviewBody: 'The absolute best restaurant in Lund if not all of Skåne. Fantastic atmosphere and staff that make you feel right at home.',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: 5 },
+      author: { '@type': 'Person', name: 'Lisa Persson' },
+      reviewBody: 'Always friendly staff with fantastic food in a cozy setting. We always come back!',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: 5 },
+      author: { '@type': 'Person', name: 'Oskar Tilly' },
+      reviewBody: 'Incredible pizzas, amazing flatbread, wonderful staff and fantastic cocktails. The new menu is on a completely different level.',
+    },
+  ],
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -123,13 +143,9 @@ const jsonLd = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts self-hosted from /fonts/ (defined in global.css @font-face) -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-400-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Preload hero poster image for LCP -->
     <link rel="preload" as="image" href="/images/2026-02-20 (1).webp" type="image/webp" />
@@ -191,7 +207,7 @@ const jsonLd = {
   </head>
 
   <body>
-    <a href="#main-content" class="skip-link">Hoppa till innehåll</a>
+    <a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Hoppa till innehåll'}</a>
     <Navbar lang={lang} />
 
     <main id="main-content">

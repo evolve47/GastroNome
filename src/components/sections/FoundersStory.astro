@@ -1,4 +1,12 @@
 ---
+import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
 ---
 
 <section class="founders">
@@ -6,7 +14,7 @@
     <div class="founders__image fade-up">
       <img
         src="/images/founder.webp"
-        alt="Grundarna av GASTRO|nome i köket"
+        alt={lang === 'en' ? 'The founders of GASTRO|nome in the kitchen' : 'Grundarna av GASTRO|nome i köket'}
         loading="lazy"
         decoding="async"
         width="480"
@@ -15,14 +23,12 @@
     </div>
 
     <div class="founders__content fade-up delay-1">
-      <span class="founders__eyebrow">Sedan 2009</span>
-      <h2 class="founders__title">Med passion<br />för matupplevelser</h2>
+      <span class="founders__eyebrow">{t(lang, 'founders.eyebrow')}</span>
+      <h2 class="founders__title" set:html={t(lang, 'founders.title').replace(lang === 'en' ? 'for' : 'för', lang === 'en' ? '<br />for' : '<br />för')} />
       <p class="founders__text">
-        GASTRO|nome grundades med en enkel vision — att skapa en plats där god mat,
-        varmt värdskap och äkta gemenskap möts. Sedan dess har vi vuxit, men hjärtat
-        är detsamma.
+        {t(lang, 'founders.text')}
       </p>
-      <p class="founders__signature">— Grundarna av GASTRO|nome</p>
+      <p class="founders__signature">{t(lang, 'founders.signature')}</p>
     </div>
   </div>
 </section>

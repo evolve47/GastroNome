@@ -1,13 +1,21 @@
 ---
+import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
 ---
 
-<section class="awards" aria-label="Utmärkelser">
+<section class="awards" aria-label={t(lang, 'awards.ariaLabel')}>
   <div class="awards__inner">
     <div class="awards__item fade-up">
       <img src="/images/pizza-champion-cup.webp" alt="Pizza SM trophy" width="40" height="40" loading="lazy" decoding="async" />
       <div>
-        <span class="awards__label">Vinnare</span>
-        <span class="awards__value">Pizza SM 2023 & 2024</span>
+        <span class="awards__label">{t(lang, 'awards.winner')}</span>
+        <span class="awards__value">{t(lang, 'awards.pizzaSm')}</span>
       </div>
     </div>
 
@@ -28,8 +36,8 @@
     <div class="awards__item fade-up delay-2">
       <span class="awards__rating">4.8</span>
       <div>
-        <span class="awards__label">#1 av 265 restauranger</span>
-        <span class="awards__value">i Lund · 884 omdömen</span>
+        <span class="awards__label">{t(lang, 'awards.restaurantsLabel')}</span>
+        <span class="awards__value">{t(lang, 'awards.restaurantsValue')}</span>
       </div>
     </div>
   </div>
@@ -82,7 +90,7 @@
   .awards__label {
     display: block;
     font-family: 'Inter', sans-serif;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);

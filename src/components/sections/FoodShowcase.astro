@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
 
 interface Props {
   lang?: Locale;
@@ -12,8 +13,8 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
 
 <section class="showcase">
   <div class="showcase__header fade-up">
-    <span class="showcase__eyebrow">Från Vårt Kök</span>
-    <h2 class="showcase__title">Smakupplevelser utöver det vanliga</h2>
+    <span class="showcase__eyebrow">{t(lang, 'food.eyebrow')}</span>
+    <h2 class="showcase__title">{t(lang, 'food.title')}</h2>
   </div>
 
   <div class="showcase__grid">
@@ -72,14 +73,14 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
     <a href={menuHref} class="showcase__item showcase__item--wide fade-up delay-1" aria-label="Middagsuppdukning">
       <img src="/images/dinner-spread-wide.webp" alt="Fulldukat bord med pizza, pasta, oliver och italienska rätter" loading="lazy" decoding="async" width="1600" height="800" />
       <div class="showcase__overlay">
-        <span class="showcase__dish">La Tavola — Middagsupplevelsen</span>
+        <span class="showcase__dish">{t(lang, 'food.laTavola')}</span>
       </div>
     </a>
   </div>
 
   <div class="showcase__cta fade-up">
     <a href={menuHref} class="showcase__link">
-      {lang === 'en' ? 'See the full menu' : 'Se hela menyn'}
+      {t(lang, 'food.cta')}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>

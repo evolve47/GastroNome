@@ -266,7 +266,7 @@ import { drinks as drinkCategories } from '../../data/drinks';
     color: var(--color-text-secondary, #6B6B6B);
     text-decoration: none;
     white-space: nowrap;
-    padding: 0.4375rem 1rem;
+    padding: 0.5625rem 1rem;
     border-radius: 2rem;
     transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     scroll-snap-align: center;
@@ -379,7 +379,12 @@ import { drinks as drinkCategories } from '../../data/drinks';
     font-weight: 600;
     color: var(--color-text, #1A1A1A);
     margin: 0;
-    white-space: nowrap;
+  }
+
+  @media (min-width: 481px) {
+    .menu-item__name {
+      white-space: nowrap;
+    }
   }
 
   .menu-item__award {

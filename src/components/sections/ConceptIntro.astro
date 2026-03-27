@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
 
 interface Props {
   lang?: Locale;
@@ -13,18 +14,16 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
 <section class="concept" id="om-oss">
   <div class="concept__container">
     <div class="concept__text slide-in-left">
-      <span class="concept__eyebrow">Vår Filosofi</span>
-      <h2 class="concept__title">Där Italien<br />möter Sverige</h2>
+      <span class="concept__eyebrow">{t(lang, 'concept.eyebrow')}</span>
+      <h2 class="concept__title" set:html={t(lang, 'concept.title').replace(lang === 'en' ? 'meets' : 'möter', lang === 'en' ? '<br />meets' : '<br />möter')} />
       <p class="concept__body">
-        En oförglömlig kväll handlar om den perfekta balansen mellan utsökt mat och dryck,
-        en ombonad atmosfär och varm personlig service.
+        {t(lang, 'concept.text')}
       </p>
       <p class="concept__body">
-        Varje besök på GASTRO|nome ska vara en upplevelse — oavsett om du njuter av en middag,
-        delar en pizza med vänner eller bara vilar med ett glas vin. Hos oss är du alltid varmt välkommen.
+        {t(lang, 'concept.text2')}
       </p>
       <a href={menuHref} class="concept__link">
-        {lang === 'en' ? 'Explore our menu' : 'Utforska vår meny'}
+        {t(lang, 'concept.cta')}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>

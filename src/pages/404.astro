@@ -12,18 +12,34 @@ import Button from '../components/ui/Button.astro';
     </div>
     <div class="not-found-hero__content">
       <span class="not-found-hero__code">404</span>
-      <h1 class="not-found-hero__title">Sidan hittades inte</h1>
-      <p class="not-found-hero__text">
+      <h1 class="not-found-hero__title" data-sv="Sidan hittades inte" data-en="Page not found">Sidan hittades inte</h1>
+      <p class="not-found-hero__text" data-sv="Sidan du letar efter verkar ha flyttats eller finns inte längre. Gå tillbaka till startsidan och utforska vår meny." data-en="The page you are looking for may have been moved or no longer exists. Go back to the homepage and explore our menu.">
         Sidan du letar efter verkar ha flyttats eller finns inte längre.
         Gå tillbaka till startsidan och utforska vår meny.
       </p>
       <div class="not-found-hero__actions">
-        <Button href="/" variant="primary" size="lg">Tillbaka till Hem</Button>
-        <Button href="/menyer/" variant="outline" size="lg">Se Menyn</Button>
+        <Button href="/" variant="primary" size="lg" data-sv-href="/" data-en-href="/en/" data-sv-text="Tillbaka till Hem" data-en-text="Back to Home">Tillbaka till Hem</Button>
+        <Button href="/menyer/" variant="outline" size="lg" data-sv-href="/menyer/" data-en-href="/en/menus/" data-sv-text="Se Menyn" data-en-text="See the Menu">Se Menyn</Button>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Detect language from URL path
+  const isEn = window.location.pathname.startsWith('/en/') || window.location.pathname === '/en';
+  if (isEn) {
+    document.querySelectorAll('[data-en]').forEach((el) => {
+      el.textContent = el.getAttribute('data-en')!;
+    });
+    document.querySelectorAll('[data-en-href]').forEach((el) => {
+      el.setAttribute('href', el.getAttribute('data-en-href')!);
+      el.textContent = el.getAttribute('data-en-text')!;
+    });
+    document.documentElement.lang = 'en';
+    document.title = '404 — Page Not Found';
+  }
+</script>
 
 <style>
   .not-found-hero {

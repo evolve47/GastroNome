@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
 
 interface Props {
   lang?: Locale;
@@ -15,8 +16,8 @@ const groupsHref = lang === 'en' ? '/en/large-groups/' : '/stora-sallskap/';
 <section class="events" id="evenemang">
   <div class="events__container">
     <div class="events__header fade-up">
-      <span class="events__eyebrow">Evenemang & Upplevelser</span>
-      <h2 class="events__title">Det händer hos oss</h2>
+      <span class="events__eyebrow">{t(lang, 'eventsHome.eyebrow')}</span>
+      <h2 class="events__title">{t(lang, 'eventsHome.title')}</h2>
     </div>
 
     <div class="events__grid">
@@ -31,11 +32,11 @@ const groupsHref = lang === 'en' ? '/en/large-groups/' : '/stora-sallskap/';
             height="450"
           />
           <div class="event-card__gradient"></div>
-          <span class="event-card__badge">Varje Torsdag</span>
+          <span class="event-card__badge">{t(lang, 'eventsHome.bubbleBadge')}</span>
         </div>
         <div class="event-card__content">
-          <h3 class="event-card__title">Bubbeltorsdag</h3>
-          <p class="event-card__desc">Varje torsdag bjuder vi på bubbel och flatbread till 19:00. Perfekt start på kvällen.</p>
+          <h3 class="event-card__title">{t(lang, 'eventsHome.bubbleTitle')}</h3>
+          <p class="event-card__desc">{t(lang, 'eventsHome.bubbleDesc')}</p>
         </div>
       </a>
 
@@ -50,11 +51,11 @@ const groupsHref = lang === 'en' ? '/en/large-groups/' : '/stora-sallskap/';
             height="450"
           />
           <div class="event-card__gradient"></div>
-          <span class="event-card__badge">2023 & 2024</span>
+          <span class="event-card__badge">{t(lang, 'eventsHome.pizzaBadge')}</span>
         </div>
         <div class="event-card__content">
-          <h3 class="event-card__title">Pizza SM Champions</h3>
-          <p class="event-card__desc">Två år i rad har vi vunnit Svenska Mästerskapen i Pizza. Smaka vinnarna hos oss.</p>
+          <h3 class="event-card__title">{t(lang, 'eventsHome.pizzaTitle')}</h3>
+          <p class="event-card__desc">{t(lang, 'eventsHome.pizzaDesc')}</p>
         </div>
       </a>
 
@@ -69,18 +70,18 @@ const groupsHref = lang === 'en' ? '/en/large-groups/' : '/stora-sallskap/';
             height="450"
           />
           <div class="event-card__gradient"></div>
-          <span class="event-card__badge">9+ gäster</span>
+          <span class="event-card__badge">{t(lang, 'eventsHome.groupBadge')}</span>
         </div>
         <div class="event-card__content">
-          <h3 class="event-card__title">Stora Sällskap</h3>
-          <p class="event-card__desc">Planerar du en fest? Vi skräddarsyr menyer för grupper från 9 personer och uppåt.</p>
+          <h3 class="event-card__title">{t(lang, 'eventsHome.groupTitle')}</h3>
+          <p class="event-card__desc">{t(lang, 'eventsHome.groupDesc')}</p>
         </div>
       </a>
     </div>
 
     <div class="events__cta fade-up">
       <a href={eventsHref} class="events__link">
-        {lang === 'en' ? 'See all events' : 'Se alla evenemang'}
+        {t(lang, 'eventsHome.cta')}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>

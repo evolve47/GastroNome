@@ -63,30 +63,66 @@ export const ui = {
     // ── Homepage — Hero ──
     'hero.eyebrow': 'Sedan 2009 i Lund',
     'hero.title': 'En oförglömlig upplevelse',
-    'hero.subtitle': 'Italiensk-svensk fusion i hjärtat av Lund',
+    'hero.titleLine1': 'En oförglömlig',
+    'hero.titleLine2': 'upplevelse',
+    'hero.subtitle': 'Italiensk-svensk fusion med kärlek till råvaror, hantverk och gemenskap',
     'hero.cta': 'Boka Bord',
-    'hero.scrollDown': 'Scrolla ner',
+    'hero.ctaMenu': 'Utforska Menyn',
+    'hero.scrollDown': 'Scrolla',
+    'hero.sideText': 'EST. 2009 — LUND, SVERIGE',
+
+    // ── Homepage — Awards Banner ──
+    'awards.ariaLabel': 'Utmärkelser',
+    'awards.winner': 'Vinnare',
+    'awards.pizzaSm': 'Pizza SM 2023 & 2024',
+    'awards.restaurantsLabel': '#1 av 265 restauranger',
+    'awards.restaurantsValue': 'i Lund · 884 omdömen',
 
     // ── Homepage — Concept Intro ──
-    'concept.eyebrow': 'Vår filosofi',
-    'concept.title': 'Där italiensk tradition möter svensk precision',
-    'concept.text': 'Vi kombinerar det bästa från det italienska köket med svenska säsongsråvaror. Varje rätt berättar en historia om passion, kvalitet och kärlek till mathantverk.',
+    'concept.eyebrow': 'Vår Filosofi',
+    'concept.title': 'Där Italien möter Sverige',
+    'concept.text': 'En oförglömlig kväll handlar om den perfekta balansen mellan utsökt mat och dryck, en ombonad atmosfär och varm personlig service.',
+    'concept.text2': 'Varje besök på GASTRO|nome ska vara en upplevelse — oavsett om du njuter av en middag, delar en pizza med vänner eller bara vilar med ett glas vin. Hos oss är du alltid varmt välkommen.',
+    'concept.cta': 'Utforska vår meny',
 
     // ── Homepage — Food Showcase ──
-    'food.eyebrow': 'Från vårt kök',
-    'food.title': 'Smaka skillnaden',
+    'food.eyebrow': 'Från Vårt Kök',
+    'food.title': 'Smakupplevelser utöver det vanliga',
+    'food.laTavola': 'La Tavola — Middagsupplevelsen',
+    'food.cta': 'Se hela menyn',
+
+    // ── Homepage — Events Highlights ──
+    'eventsHome.eyebrow': 'Evenemang & Upplevelser',
+    'eventsHome.title': 'Det händer hos oss',
+    'eventsHome.bubbleBadge': 'Varje Torsdag',
+    'eventsHome.bubbleTitle': 'Bubbeltorsdag',
+    'eventsHome.bubbleDesc': 'Varje torsdag bjuder vi på bubbel och flatbread till 19:00. Perfekt start på kvällen.',
+    'eventsHome.pizzaBadge': '2023 & 2024',
+    'eventsHome.pizzaTitle': 'Pizza SM Champions',
+    'eventsHome.pizzaDesc': 'Två år i rad har vi vunnit Svenska Mästerskapen i Pizza. Smaka vinnarna hos oss.',
+    'eventsHome.groupBadge': '9+ gäster',
+    'eventsHome.groupTitle': 'Stora Sällskap',
+    'eventsHome.groupDesc': 'Planerar du en fest? Vi skräddarsyr menyer för grupper från 9 personer och uppåt.',
+    'eventsHome.cta': 'Se alla evenemang',
 
     // ── Homepage — Testimonials ──
-    'testimonials.eyebrow': 'Våra gäster',
-    'testimonials.title': 'Vad de säger',
+    'testimonials.eyebrow': 'Våra Gäster',
+    'testimonials.title': 'Upplevelser att minnas',
+    'testimonials.meta': '4.8 av 5 · 884 omdömen',
+    'testimonials.readAll': 'Läs alla omdömen på TripAdvisor',
 
     // ── Homepage — Founders Story ──
-    'founders.eyebrow': 'Vår historia',
-    'founders.title': 'Passionen bakom varje rätt',
+    'founders.eyebrow': 'Sedan 2009',
+    'founders.title': 'Med passion för matupplevelser',
+    'founders.text': 'GASTRO|nome grundades med en enkel vision — att skapa en plats där god mat, varmt värdskap och äkta gemenskap möts. Sedan dess har vi vuxit, men hjärtat är detsamma.',
+    'founders.signature': '— Grundarna av GASTRO|nome',
 
     // ── Homepage — Takeaway ──
-    'takeaway.eyebrow': 'Avhämtning & Leverans',
-    'takeaway.title': 'GASTRO|nome hemma',
+    'takeaway.eyebrow': 'Avhämtning & Hemleverans',
+    'takeaway.title': 'Njut hemma',
+    'takeaway.text': 'Ta med dig GASTRO|nome-upplevelsen hem. Beställ online för avhämtning eller hemleverans — samma kvalitet, samma kärlek.',
+    'takeaway.orderCta': 'Beställ Online',
+    'takeaway.callCta': 'Ring Oss: 046-390000',
 
     // ── Homepage — Instagram ──
     'instagram.eyebrow': 'Instagram',
@@ -288,30 +324,66 @@ export const ui = {
     // ── Homepage — Hero ──
     'hero.eyebrow': 'Since 2009 in Lund',
     'hero.title': 'An unforgettable experience',
-    'hero.subtitle': 'Italian-Swedish fusion in the heart of Lund',
+    'hero.titleLine1': 'An unforgettable',
+    'hero.titleLine2': 'experience',
+    'hero.subtitle': 'Italian-Swedish fusion with love for quality ingredients, craftsmanship and community',
     'hero.cta': 'Book a Table',
-    'hero.scrollDown': 'Scroll down',
+    'hero.ctaMenu': 'Explore the Menu',
+    'hero.scrollDown': 'Scroll',
+    'hero.sideText': 'EST. 2009 — LUND, SWEDEN',
+
+    // ── Homepage — Awards Banner ──
+    'awards.ariaLabel': 'Awards',
+    'awards.winner': 'Winner',
+    'awards.pizzaSm': 'Pizza SM 2023 & 2024',
+    'awards.restaurantsLabel': '#1 of 265 restaurants',
+    'awards.restaurantsValue': 'in Lund · 884 reviews',
 
     // ── Homepage — Concept Intro ──
-    'concept.eyebrow': 'Our philosophy',
-    'concept.title': 'Where Italian tradition meets Swedish precision',
-    'concept.text': 'We combine the best of Italian cuisine with Swedish seasonal ingredients. Every dish tells a story of passion, quality, and love for culinary craftsmanship.',
+    'concept.eyebrow': 'Our Philosophy',
+    'concept.title': 'Where Italy meets Sweden',
+    'concept.text': 'An unforgettable evening is about the perfect balance between exquisite food and drink, a welcoming atmosphere and warm personal service.',
+    'concept.text2': 'Every visit to GASTRO|nome should be an experience — whether you are enjoying a dinner, sharing a pizza with friends, or simply relaxing with a glass of wine. You are always warmly welcome.',
+    'concept.cta': 'Explore our menu',
 
     // ── Homepage — Food Showcase ──
-    'food.eyebrow': 'From our kitchen',
-    'food.title': 'Taste the difference',
+    'food.eyebrow': 'From Our Kitchen',
+    'food.title': 'Flavors beyond the ordinary',
+    'food.laTavola': 'La Tavola — The Dining Experience',
+    'food.cta': 'See the full menu',
+
+    // ── Homepage — Events Highlights ──
+    'eventsHome.eyebrow': 'Events & Experiences',
+    'eventsHome.title': 'What\'s happening',
+    'eventsHome.bubbleBadge': 'Every Thursday',
+    'eventsHome.bubbleTitle': 'Bubble Thursday',
+    'eventsHome.bubbleDesc': 'Every Thursday we offer sparkling wine and flatbread until 7 PM. The perfect start to the evening.',
+    'eventsHome.pizzaBadge': '2023 & 2024',
+    'eventsHome.pizzaTitle': 'Pizza SM Champions',
+    'eventsHome.pizzaDesc': 'Two years running, we won the Swedish Pizza Championships. Taste the winners with us.',
+    'eventsHome.groupBadge': '9+ guests',
+    'eventsHome.groupTitle': 'Large Groups',
+    'eventsHome.groupDesc': 'Planning a celebration? We tailor menus for groups of 9 or more.',
+    'eventsHome.cta': 'See all events',
 
     // ── Homepage — Testimonials ──
-    'testimonials.eyebrow': 'Our guests',
-    'testimonials.title': 'What they say',
+    'testimonials.eyebrow': 'Our Guests',
+    'testimonials.title': 'Experiences to remember',
+    'testimonials.meta': '4.8 of 5 · 884 reviews',
+    'testimonials.readAll': 'Read all reviews on TripAdvisor',
 
     // ── Homepage — Founders Story ──
-    'founders.eyebrow': 'Our story',
-    'founders.title': 'The passion behind every dish',
+    'founders.eyebrow': 'Since 2009',
+    'founders.title': 'With passion for dining experiences',
+    'founders.text': 'GASTRO|nome was founded with a simple vision — to create a place where great food, warm hospitality and genuine community come together. We have grown since then, but the heart remains the same.',
+    'founders.signature': '— The Founders of GASTRO|nome',
 
     // ── Homepage — Takeaway ──
-    'takeaway.eyebrow': 'Takeaway & Delivery',
-    'takeaway.title': 'GASTRO|nome at home',
+    'takeaway.eyebrow': 'Takeaway & Home Delivery',
+    'takeaway.title': 'Enjoy at home',
+    'takeaway.text': 'Bring the GASTRO|nome experience home. Order online for pickup or home delivery — same quality, same love.',
+    'takeaway.orderCta': 'Order Online',
+    'takeaway.callCta': 'Call Us: 046-390000',
 
     // ── Homepage — Instagram ──
     'instagram.eyebrow': 'Instagram',

@@ -1,5 +1,13 @@
 ---
 import Button from '../ui/Button.astro';
+import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
 ---
 
 <section class="takeaway">
@@ -7,7 +15,7 @@ import Button from '../ui/Button.astro';
     <div class="takeaway__image slide-in-left">
       <img
         src="/images/gastronome_hamtning-764x1024-1.webp"
-        alt="Personal med takeaway-kassar från GASTRO|nome"
+        alt={lang === 'en' ? 'Staff with takeaway bags from GASTRO|nome' : 'Personal med takeaway-kassar från GASTRO|nome'}
         loading="lazy"
         decoding="async"
         width="480"
@@ -16,15 +24,14 @@ import Button from '../ui/Button.astro';
     </div>
 
     <div class="takeaway__content slide-in-right">
-      <span class="takeaway__eyebrow">Avhämtning & Hemleverans</span>
-      <h2 class="takeaway__title">Njut hemma</h2>
+      <span class="takeaway__eyebrow">{t(lang, 'takeaway.eyebrow')}</span>
+      <h2 class="takeaway__title">{t(lang, 'takeaway.title')}</h2>
       <p class="takeaway__text">
-        Ta med dig GASTRO|nome-upplevelsen hem. Beställ online för avhämtning
-        eller hemleverans — samma kvalitet, samma kärlek.
+        {t(lang, 'takeaway.text')}
       </p>
       <div class="takeaway__actions">
-        <Button href="https://eatsmart.se/gastronome" variant="primary">Beställ Online</Button>
-        <Button href="tel:+46-46-390000" variant="outline">Ring Oss: 046-390000</Button>
+        <Button href="https://eatsmart.se/gastronome" variant="primary">{t(lang, 'takeaway.orderCta')}</Button>
+        <Button href="tel:+46-46-390000" variant="outline">{t(lang, 'takeaway.callCta')}</Button>
       </div>
     </div>
   </div>

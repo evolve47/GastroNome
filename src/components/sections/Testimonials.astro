@@ -1,21 +1,40 @@
 ---
 import { reviews } from '../../data/reviews';
+import type { Locale, UIKey } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
+
+const reviewKeys: Record<string, UIKey> = {
+  'Burim': 'review.burim',
+  'Lisa Persson': 'review.lisa',
+  'Oskar Tilly': 'review.oskar',
+  'Emma JS': 'review.emma',
+  'Spellevink2014': 'review.spellevink',
+  'Evelina H': 'review.evelina',
+  'Yasna G': 'review.yasna',
+  'Mark R': 'review.mark',
+};
 ---
 
 <section class="testimonials">
   <div class="testimonials__container">
     <div class="testimonials__header fade-up">
-      <span class="testimonials__eyebrow">Våra Gäster</span>
-      <h2 class="testimonials__title">Upplevelser att minnas</h2>
+      <span class="testimonials__eyebrow">{t(lang, 'testimonials.eyebrow')}</span>
+      <h2 class="testimonials__title">{t(lang, 'testimonials.title')}</h2>
       <p class="testimonials__meta">
-        <span class="testimonials__stars" aria-label="4.8 av 5 stjärnor">
+        <span class="testimonials__stars" aria-label={lang === 'en' ? '4.8 of 5 stars' : '4.8 av 5 stjärnor'}>
           {[1,2,3,4,5].map((i) => (
             <svg class={`testimonials__star ${i === 5 ? 'testimonials__star--partial' : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
           ))}
         </span>
-        <span>4.8 av 5 &middot; 884 omdömen</span>
+        <span>{t(lang, 'testimonials.meta')}</span>
       </p>
     </div>
 
@@ -24,7 +43,7 @@ import { reviews } from '../../data/reviews';
         {reviews.map((review) => (
           <article class="review-card">
             <div class="review-card__quote" aria-hidden="true">&ldquo;</div>
-            <blockquote class="review-card__text">{review.text}</blockquote>
+            <blockquote class="review-card__text">{reviewKeys[review.name] ? t(lang, reviewKeys[review.name]) : review.text}</blockquote>
             <footer class="review-card__footer">
               <span class="review-card__name">{review.name}</span>
               <span class="review-card__source">
@@ -55,7 +74,7 @@ import { reviews } from '../../data/reviews';
 
     <div class="testimonials__link-wrap fade-up">
       <a href="https://www.tripadvisor.com/Restaurant_Review-g189838-d21511925-Reviews-GASTRO_nome_Mat_Bar-Lund_Skane_County.html" class="testimonials__link" target="_blank" rel="noopener noreferrer">
-        Läs alla omdömen på TripAdvisor
+        {t(lang, 'testimonials.readAll')}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M7 17L17 7M17 7H7M17 7v10" />
         </svg>

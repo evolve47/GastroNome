@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
+
 const images = [
   { src: '/images/640820505_18084012917349192_4427101478650068827_n.webp', alt: 'Antipasti-upplägg' },
   { src: '/images/625893750_18082235780349192_8693356649389373423_n.webp', alt: 'Servering av rätter' },
@@ -12,7 +21,7 @@ const images = [
 <section class="instagram">
   <div class="instagram__header fade-up">
     <a href="https://www.instagram.com/gastronomelund" target="_blank" rel="noopener noreferrer" class="instagram__heading">
-      Följ oss
+      {t(lang, 'instagram.title')}
       <span class="instagram__handle">@gastronomelund</span>
     </a>
   </div>

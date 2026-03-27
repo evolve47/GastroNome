@@ -1,6 +1,7 @@
 ---
 import Button from '../ui/Button.astro';
 import type { Locale } from '../../i18n/ui';
+import { t } from '../../i18n/utils';
 
 interface Props {
   lang?: Locale;
@@ -60,29 +61,29 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
     <span class="hero__eyebrow hero-reveal" data-delay="200">Bangatan 6, Lund</span>
 
     <h1 class="hero__title">
-      <span class="hero__title-line hero-reveal" data-delay="400">En oförglömlig</span>
-      <span class="hero__title-line hero-reveal" data-delay="550">upplevelse</span>
+      <span class="hero__title-line hero-reveal" data-delay="400">{t(lang, 'hero.titleLine1')}</span>
+      <span class="hero__title-line hero-reveal" data-delay="550">{t(lang, 'hero.titleLine2')}</span>
     </h1>
 
     <p class="hero__subtitle hero-reveal" data-delay="750">
-      Italiensk-svensk fusion med kärlek till råvaror, hantverk och gemenskap
+      {t(lang, 'hero.subtitle')}
     </p>
 
     <div class="hero__actions hero-reveal" data-delay="950">
-      <Button href={bookHref} variant="primary" size="lg">{lang === 'en' ? 'Book a Table' : 'Boka Bord'}</Button>
-      <Button href={menuHref} variant="outline" size="lg">{lang === 'en' ? 'Explore the Menu' : 'Utforska Menyn'}</Button>
+      <Button href={bookHref} variant="primary" size="lg">{t(lang, 'hero.cta')}</Button>
+      <Button href={menuHref} variant="outline" size="lg">{t(lang, 'hero.ctaMenu')}</Button>
     </div>
   </div>
 
   <!-- Scroll indicator with animated line -->
   <div class="hero__scroll" id="heroScroll">
     <div class="hero__scroll-line"></div>
-    <span class="hero__scroll-text">Scrolla</span>
+    <span class="hero__scroll-text">{t(lang, 'hero.scrollDown')}</span>
   </div>
 
   <!-- Side decorative text -->
   <div class="hero__side-text" aria-hidden="true">
-    EST. 2009 — LUND, SVERIGE
+    {t(lang, 'hero.sideText')}
   </div>
 </section>
 
@@ -203,6 +204,7 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
       let targetY = 0;
       let currentX = 0;
       let currentY = 0;
+      let rafId: number;
 
       document.addEventListener('mousemove', (e) => {
         const cx = window.innerWidth / 2;
@@ -215,9 +217,12 @@ const menuHref = lang === 'en' ? '/en/menus/' : '/menyer/';
         currentX += (targetX - currentX) * 0.06;
         currentY += (targetY - currentY) * 0.06;
         heroImgWrap.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.08)`;
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
       };
       animate();
+
+      // Cancel rAF on page navigation to prevent memory leak
+      document.addEventListener('astro:before-swap', () => cancelAnimationFrame(rafId), { once: true });
     }
   })();
 </script>
