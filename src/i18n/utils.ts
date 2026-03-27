@@ -28,12 +28,12 @@ export function getLocaleFromUrl(url: URL): Locale {
 
 const slugMap: Record<string, string> = {
   '/': '/en/',
-  '/evenemang': '/en/events',
-  '/menyer': '/en/menus',
-  '/boka-bord': '/en/book-a-table',
-  '/presentkort': '/en/gift-cards',
-  '/stora-sallskap': '/en/large-groups',
-  '/bestall-online': '/en/order-online',
+  '/evenemang': '/en/events/',
+  '/menyer': '/en/menus/',
+  '/boka-bord': '/en/book-a-table/',
+  '/presentkort': '/en/gift-cards/',
+  '/stora-sallskap': '/en/large-groups/',
+  '/bestall-online': '/en/order-online/',
 };
 
 /** Reverse map: English path -> Swedish path */

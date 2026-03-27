@@ -139,6 +139,8 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
       </a>
     </div>
   </div>
+
+  <div class="navbar__backdrop" id="nav-backdrop" aria-hidden="true"></div>
 </header>
 
 <script is:inline>
@@ -186,6 +188,13 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
         }
       });
     });
+
+    var backdrop = document.getElementById('nav-backdrop');
+    if (backdrop) {
+      backdrop.addEventListener('click', function() {
+        if (isOpen) toggle.click();
+      });
+    }
 
     /* Close on Escape */
     document.addEventListener('keydown', function (e) {
@@ -609,6 +618,23 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
 
   .navbar__mobile-phone:hover {
     color: var(--color-accent-warm, #8b6f47);
+  }
+
+  .navbar__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    pointer-events: none;
+  }
+
+  .navbar.is-open .navbar__backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   /* ── Desktop breakpoint ── */
