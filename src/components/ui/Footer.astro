@@ -1,7 +1,33 @@
 ---
 import { siteConfig } from '@data/site';
+import { t, getNav } from '../../i18n/utils';
+import type { Locale } from '../../i18n/ui';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'sv' } = Astro.props;
 
 const currentYear = new Date().getFullYear();
+const navItems = getNav(lang);
+
+/* Translated day names */
+const dayKeys = [
+  'hours.monday',
+  'hours.tuesday',
+  'hours.wednesday',
+  'hours.thursday',
+  'hours.friday',
+  'hours.saturday',
+  'hours.sunday',
+] as const;
+
+const hoursData = siteConfig.hours.map((h, i) => ({
+  day: t(lang, dayKeys[i]),
+  hours: h.hours === 'Stängt' ? t(lang, 'hours.closed') : h.hours,
+  isClosed: h.hours === 'Stängt',
+}));
 ---
 
 <footer class="footer" role="contentinfo">
@@ -12,7 +38,7 @@ const currentYear = new Date().getFullYear();
   <div class="footer__quote-section">
     <div class="footer__container">
       <p class="footer__quote reveal">
-        &ldquo;Restaurangen med det lilla extra&rdquo;
+        &ldquo;{t(lang, 'footer.quote')}&rdquo;
       </p>
     </div>
   </div>
@@ -22,7 +48,7 @@ const currentYear = new Date().getFullYear();
     <div class="footer__container footer__grid">
       <!-- Col 1: Contact -->
       <div class="footer__col reveal">
-        <h3 class="footer__col-title">Besök Oss</h3>
+        <h3 class="footer__col-title">{t(lang, 'footer.visitUs')}</h3>
         <address class="footer__address">
           <p>{siteConfig.address.street}</p>
           <p>{siteConfig.address.zip} {siteConfig.address.city}</p>
@@ -42,11 +68,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 2: Opening hours -->
       <div class="footer__col reveal">
-        <h3 class="footer__col-title">Öppettider</h3>
+        <h3 class="footer__col-title">{t(lang, 'footer.openingHours')}</h3>
         <table class="footer__hours" role="presentation">
           <tbody>
-            {siteConfig.hours.map((h) => (
-              <tr class:list={[{ 'is-closed': h.hours === 'Stängt' }]}>
+            {hoursData.map((h) => (
+              <tr class:list={[{ 'is-closed': h.isClosed }]}>
                 <td class="footer__hours-day">{h.day}</td>
                 <td class="footer__hours-time">{h.hours}</td>
               </tr>
@@ -57,16 +83,16 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 3: Navigation + Social -->
       <div class="footer__col reveal">
-        <h3 class="footer__col-title">Navigering</h3>
+        <h3 class="footer__col-title">{t(lang, 'footer.navigation')}</h3>
         <ul class="footer__nav-links">
-          {siteConfig.nav.map((link) => (
+          {navItems.map((link) => (
             <li>
               <a href={link.href} class="footer__link">{link.label}</a>
             </li>
           ))}
         </ul>
 
-        <h3 class="footer__col-title footer__col-title--social">Följ Oss</h3>
+        <h3 class="footer__col-title footer__col-title--social">{t(lang, 'footer.followUs')}</h3>
         <div class="footer__social">
           <!-- Facebook -->
           <a
@@ -145,10 +171,10 @@ const currentYear = new Date().getFullYear();
   <div class="footer__bottom">
     <div class="footer__container footer__bottom-inner">
       <p class="footer__copyright">
-        &copy; {currentYear} Gastronome. Alla rättigheter förbehållna.
+        &copy; {currentYear} Gastronome. {t(lang, 'footer.copyright')}
       </p>
       <p class="footer__credit">
-        Designad med passion
+        {t(lang, 'footer.credit')}
       </p>
     </div>
   </div>

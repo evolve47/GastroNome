@@ -1,0 +1,459 @@
+// ============================================================
+// GASTRO|nome — Internationalization: Translation Strings
+// ============================================================
+
+export type Locale = 'sv' | 'en';
+
+export const ui = {
+  sv: {
+    // ── Navigation ──
+    'nav.hem': 'Hem',
+    'nav.evenemang': 'Evenemang',
+    'nav.menyer': 'Menyer',
+    'nav.boka-bord': 'Boka Bord',
+    'nav.presentkort': 'Presentkort',
+    'nav.stora-sallskap': 'Stora Sällskap',
+    'nav.bestall-online': 'Beställ Online',
+
+    // ── Navigation hrefs ──
+    'href.hem': '/',
+    'href.evenemang': '/evenemang',
+    'href.menyer': '/menyer',
+    'href.boka-bord': '/boka-bord',
+    'href.presentkort': '/presentkort',
+    'href.stora-sallskap': '/stora-sallskap',
+    'href.bestall-online': '/bestall-online',
+
+    // ── Language switcher ──
+    'lang.code': 'EN',
+    'lang.label': 'Switch to English',
+    'lang.full': 'English',
+
+    // ── Common UI ──
+    'ui.scroll': 'Scrolla',
+    'ui.scrollToTop': 'Scrolla till toppen',
+    'ui.readMore': 'Läs mer',
+    'ui.seeAll': 'Se alla',
+    'ui.send': 'Skicka',
+    'ui.openMenu': 'Öppna meny',
+    'ui.closeMenu': 'Stäng meny',
+    'ui.mainNav': 'Huvudnavigation',
+    'ui.mobileNav': 'Mobilnavigation',
+    'ui.logoAria': 'Gastronome — Hem',
+
+    // ── Footer ──
+    'footer.quote': 'Restaurangen med det lilla extra',
+    'footer.visitUs': 'Besök Oss',
+    'footer.openingHours': 'Öppettider',
+    'footer.navigation': 'Navigering',
+    'footer.followUs': 'Följ Oss',
+    'footer.copyright': 'Alla rättigheter förbehållna.',
+    'footer.credit': 'Designad med passion',
+
+    // ── Opening hours ──
+    'hours.monday': 'Måndag',
+    'hours.tuesday': 'Tisdag',
+    'hours.wednesday': 'Onsdag',
+    'hours.thursday': 'Torsdag',
+    'hours.friday': 'Fredag',
+    'hours.saturday': 'Lördag',
+    'hours.sunday': 'Söndag',
+    'hours.closed': 'Stängt',
+
+    // ── Homepage — Hero ──
+    'hero.eyebrow': 'Sedan 2009 i Lund',
+    'hero.title': 'En oförglömlig upplevelse',
+    'hero.subtitle': 'Italiensk-svensk fusion i hjärtat av Lund',
+    'hero.cta': 'Boka Bord',
+    'hero.scrollDown': 'Scrolla ner',
+
+    // ── Homepage — Concept Intro ──
+    'concept.eyebrow': 'Vår filosofi',
+    'concept.title': 'Där italiensk tradition möter svensk precision',
+    'concept.text': 'Vi kombinerar det bästa från det italienska köket med svenska säsongsråvaror. Varje rätt berättar en historia om passion, kvalitet och kärlek till mathantverk.',
+
+    // ── Homepage — Food Showcase ──
+    'food.eyebrow': 'Från vårt kök',
+    'food.title': 'Smaka skillnaden',
+
+    // ── Homepage — Testimonials ──
+    'testimonials.eyebrow': 'Våra gäster',
+    'testimonials.title': 'Vad de säger',
+
+    // ── Homepage — Founders Story ──
+    'founders.eyebrow': 'Vår historia',
+    'founders.title': 'Passionen bakom varje rätt',
+
+    // ── Homepage — Takeaway ──
+    'takeaway.eyebrow': 'Avhämtning & Leverans',
+    'takeaway.title': 'GASTRO|nome hemma',
+
+    // ── Homepage — Instagram ──
+    'instagram.eyebrow': 'Instagram',
+    'instagram.title': 'Följ oss',
+
+    // ── Events page ──
+    'events.metaTitle': 'Evenemang — GASTRO|nome Mat & Bar | Bubbeltorsdag & Specialkvällar',
+    'events.metaDesc': 'Upptäck GASTRO|nome\'s evenemang. Bubbeltorsdag varje vecka, säsongsmenyer, vinprovningar och privata tillställningar. Bangatan 6, Lund.',
+    'events.heroEyebrow': 'Evenemang',
+    'events.heroTitle': 'Upplevelser som<br />stannar kvar',
+    'events.heroSub': 'Från Bubbeltorsdagar till privata fester — det finns alltid något att se fram emot',
+    'events.bubbleBadge': 'Varje Torsdag',
+    'events.bubbleTitle': 'Bubbeltorsdag',
+    'events.bubbleText': 'Starta torsdagskvällen rätt. Varje vecka bjuder vi på bubbel och nybakade flatbread fram till klockan 19:00. Perfekt för en afterwork eller en mysig start på kvällen med vänner.',
+    'events.bubbleWhen': 'När:',
+    'events.bubbleWhenVal': 'Varje torsdag, 17:00–19:00',
+    'events.bubbleOffer': 'Erbjudande:',
+    'events.bubbleOfferVal': 'Bubbel + flatbread',
+    'events.bubbleCta': 'Boka Bord',
+    'events.pizzaBadge': '2023 & 2024',
+    'events.pizzaTitle': 'Pizza SM Champions',
+    'events.pizzaText': 'Två år i rad har vi tagit hem guldmedaljen i Svenska Mästerskapen i Pizza. Våra vinnarrecept — <em>Filetto alla GASTRO</em> och <em>Cavolo Meraviglioso</em> — finns på den ordinarie menyn. Smaka själv varför domarna var eniga.',
+    'events.pizzaAward1': 'Filetto alla GASTRO — 1:a plats 2024',
+    'events.pizzaAward2': 'Cavolo Meraviglioso — 1:a plats 2023',
+    'events.pizzaCta': 'Se Menyn',
+    'events.groupBadge': '9+ gäster',
+    'events.groupTitle': 'Stora Sällskap',
+    'events.groupText': 'Planerar du en födelsedag, firmafest eller familjemiddag? Vi skräddarsyr menyer för grupper från 9 personer och uppåt. Vårt andra våningsplan erbjuder en privat och elegant atmosfär för era tillställningar.',
+    'events.groupCta': 'Läs Mer & Boka',
+    'events.ctaTitle': 'Vill du vara först med att veta?',
+    'events.ctaText': 'Följ oss på Instagram för att hålla koll på kommande evenemang och säsongsmenyer.',
+
+    // ── Menus page ──
+    'menus.metaTitle': 'Meny — GASTRO|nome Mat & Bar | À la Carte & Dryck',
+    'menus.metaDesc': 'Utforska GASTRO|nome\'s fullständiga meny. Prisbelönta pizzor, handgjord pasta, italienska förrätter och en imponerande vinlista. Bangatan 6, Lund.',
+    'menus.heroEyebrow': 'Meny',
+    'menus.heroTitle': 'À la Carte',
+    'menus.heroSubtitle': 'Italiensk-svensk fusion med säsongens bästa råvaror',
+    'menus.drinksNav': 'Dryckesmeny',
+    'menus.drinksEyebrow': 'Dryckesmeny',
+    'menus.drinksTitle': 'Vin, Öl & Cocktails',
+    'menus.allergyTitle': 'Allergier?',
+    'menus.allergyText': 'Vid frågor gällande allergi, kontakta vår personal. Vi hjälper dig gärna.',
+    'menus.tagVegetarian': 'Vegetariskt',
+    'menus.tagVegan': 'Veganskt',
+    'menus.tagVeganOption': 'Veganskt alt.',
+    'menus.tagGlutenFreeOption': 'Glutenfritt alt.',
+    'menus.tagAward': 'Prisbelönt',
+
+    // ── Book a table page ──
+    'booking.metaTitle': 'Boka Bord — GASTRO|nome Mat & Bar | Reservera i Lund',
+    'booking.metaDesc': 'Boka bord på GASTRO|nome, Lunds #1 restaurang. Ring 046-390000 eller boka online. Bangatan 6, 222 21 Lund.',
+    'booking.eyebrow': 'Reservera',
+    'booking.title': 'Boka Bord',
+    'booking.text': 'Vi rekommenderar att boka bord i förväg, särskilt fredag och lördag. Välj det sätt som passar dig bäst.',
+    'booking.callUs': 'Ring oss',
+    'booking.emailUs': 'Maila oss',
+    'booking.instagramDm': 'Instagram DM',
+    'booking.hoursTitle': 'Öppettider',
+    'booking.findUs': 'Hitta hit',
+    'booking.nearStation': 'I hjärtat av Lund, nära stationen',
+    'booking.mapTitle': 'GASTRO|nome karta',
+
+    // ── Gift cards page ──
+    'gift.metaTitle': 'Presentkort — GASTRO|nome Mat & Bar | Ge bort en upplevelse',
+    'gift.metaDesc': 'Ge bort en oförglömlig matupplevelse. Köp presentkort till GASTRO|nome, Lunds #1 restaurang. Perfekt present till alla tillfällen.',
+    'gift.eyebrow': 'Presentkort',
+    'gift.title': 'Ge bort en<br />oförglömlig kväll',
+    'gift.text1': 'Letar du efter den perfekta presenten? Ett presentkort till GASTRO|nome ger mottagaren friheten att njuta av prisbelönt mat och dryck — när det passar dem bäst.',
+    'gift.text2': 'Kontakta oss för att köpa presentkort till valfritt belopp. Vi skickar det digitalt eller så kan du hämta ett fysiskt kort hos oss.',
+    'gift.callCta': 'Ring Oss: 046-390000',
+    'gift.emailCta': 'Maila Oss',
+    'gift.cardType': 'Presentkort',
+    'gift.cardValue': 'Valfritt belopp',
+
+    // ── Large groups page ──
+    'groups.metaTitle': 'Stora Sällskap — GASTRO|nome Mat & Bar | Privata Middagar i Lund',
+    'groups.metaDesc': 'Planera din fest på GASTRO|nome. Skräddarsydda menyer för grupper från 9 personer. Privat våningsplan, företagsmiddagar och familjefester. Boka nu!',
+    'groups.heroEyebrow': 'Stora Sällskap',
+    'groups.heroTitle': 'Er kväll,<br />vår passion',
+    'groups.heroSub': 'Skräddarsydda menyer och privat atmosfär för grupper från 9 personer',
+    'groups.infoTitle': 'Hur det fungerar',
+    'groups.infoText': 'För sällskap med 8 eller fler gäster erbjuder vi ett specialanpassat menyupplägg. Ni väljer rätter ur vår meny och vi tar hand om resten. Vårt andra våningsplan med sin eleganta och avskilda atmosfär är perfekt för större tillställningar.',
+    'groups.menuFormat': 'Menyformat',
+    'groups.menuFormatText': '2-rätters (förrätt + huvudrätt eller huvudrätt + dessert) som standard. Uppgradering till 3-rätters finns.',
+    'groups.selectionTitle': 'Val baserat på antal',
+    'groups.selection1': '9–14 gäster: välj bland 6 alternativ per kategori',
+    'groups.selection2': '15–19 gäster: välj bland 5 alternativ per kategori',
+    'groups.selection3': '20+ gäster: välj bland 3 alternativ per kategori',
+    'groups.datesTitle': 'Viktiga datum',
+    'groups.date1': 'Menyval senast 5 dagar innan',
+    'groups.date2': 'Ändring av antal senast kl 12:00 samma dag',
+    'groups.date3': 'Avbokning senast 7 dagar innan (450 kr/gäst vid sen avbokning)',
+    'groups.formTitle': 'Boka för ert sällskap',
+    'groups.formSubtitle': 'Fyll i formuläret så återkommer vi inom 24 timmar',
+    'groups.formSubject': 'Stora Sällskap — Ny förfrågan via hemsidan',
+
+    // ── Form labels ──
+    'form.name': 'Namn',
+    'form.namePlaceholder': 'Ditt namn',
+    'form.email': 'E-post',
+    'form.emailPlaceholder': 'din@email.se',
+    'form.phone': 'Telefon',
+    'form.phonePlaceholder': '070-xxx xxxx',
+    'form.guests': 'Antal gäster',
+    'form.guestsPlaceholder': '9',
+    'form.date': 'Önskat datum',
+    'form.eventType': 'Typ av tillställning',
+    'form.eventTypeDefault': 'Välj...',
+    'form.eventBirthday': 'Födelsedag',
+    'form.eventCorporate': 'Firmafest / afterwork',
+    'form.eventFamily': 'Familjemiddag',
+    'form.eventWedding': 'Bröllop / förlovning',
+    'form.eventOther': 'Annat',
+    'form.message': 'Meddelande',
+    'form.messagePlaceholder': 'Berätta mer om ert event, önskemål eller frågor...',
+    'form.submit': 'Skicka Förfrågan',
+    'groups.altText': 'Föredrar du att ringa? Kontakta oss direkt på',
+    'groups.altOr': 'eller maila',
+
+    // ── Order online page ──
+    'order.metaTitle': 'Beställ Online — GASTRO|nome Mat & Bar | Avhämtning & Hemleverans i Lund',
+    'order.metaDesc': 'Beställ GASTRO|nome\'s prisbelönta mat online. Avhämtning eller hemleverans i Lund. Pizzor, pasta, förrätter och mer. Beställ via EatSmart.',
+    'order.eyebrow': 'Beställ Online',
+    'order.title': 'GASTRO|nome<br />till dörren',
+    'order.text': 'Njut av samma prisbelönta mat hemma. Vi erbjuder avhämtning direkt från restaurangen och hemleverans via vår partner. Samma kvalitet, samma kärlek — rakt hem till dig.',
+    'order.eatsmartTitle': 'Beställ via EatSmart',
+    'order.eatsmartDesc': 'Avhämtning och hemleverans. Se meny, välj rätter och betala online.',
+    'order.eatsmartCta': 'Gå till EatSmart',
+    'order.phoneTitle': 'Ring & Beställ',
+    'order.phoneDesc': 'Föredrar du att beställa per telefon? Ring oss så förbereder vi din order.',
+
+    // ── Reviews (translated text) ──
+    'review.burim': 'Den absolut bästa restaurangen i Lund om inte hela Skåne. Fantastisk atmosfär och personal som får dig att känna dig som hemma.',
+    'review.lisa': 'Alltid trevlig personal med fantastisk mat i en mysig miljö. Vi återkommer alltid!',
+    'review.oskar': 'Otroliga pizzor, fantastiskt flatbröd, underbar personal och fantastiska cocktails. Nya menyn är på en helt annan nivå.',
+    'review.emma': 'Vår absoluta favoritplats. 10/10 mat och dryck. Varje smakkombination är genomtänkt. En liten gömd pärla.',
+    'review.spellevink': 'Alla hjärtans dag-middag på Lunds mysigaste ställe. Fantastisk atmosfär, underbar mat och ägaren kom förbi och hälsade personligt.',
+    'review.evelina': 'Firade födelsedag med SM-vinnande pizzan Cavolo Meraviglioso — unik och fantastisk smak. Desserterna Fragola och Crème brûlée var perfekta.',
+    'review.yasna': 'Firade födelsedag med exceptionell service. Pizzorna var i en helt annan dimension och biffrätten smälte i munnen.',
+    'review.mark': 'Familjevänligt med läcker och smakrik mat i en mysig atmosfär. Vitlöksbrödet nybakat med omsorg. Välkomnande personal.',
+  },
+
+  en: {
+    // ── Navigation ──
+    'nav.hem': 'Home',
+    'nav.evenemang': 'Events',
+    'nav.menyer': 'Menus',
+    'nav.boka-bord': 'Book a Table',
+    'nav.presentkort': 'Gift Cards',
+    'nav.stora-sallskap': 'Large Groups',
+    'nav.bestall-online': 'Order Online',
+
+    // ── Navigation hrefs ──
+    'href.hem': '/en/',
+    'href.evenemang': '/en/events',
+    'href.menyer': '/en/menus',
+    'href.boka-bord': '/en/book-a-table',
+    'href.presentkort': '/en/gift-cards',
+    'href.stora-sallskap': '/en/large-groups',
+    'href.bestall-online': '/en/order-online',
+
+    // ── Language switcher ──
+    'lang.code': 'SV',
+    'lang.label': 'Byt till svenska',
+    'lang.full': 'Svenska',
+
+    // ── Common UI ──
+    'ui.scroll': 'Scroll',
+    'ui.scrollToTop': 'Scroll to top',
+    'ui.readMore': 'Read more',
+    'ui.seeAll': 'See all',
+    'ui.send': 'Send',
+    'ui.openMenu': 'Open menu',
+    'ui.closeMenu': 'Close menu',
+    'ui.mainNav': 'Main navigation',
+    'ui.mobileNav': 'Mobile navigation',
+    'ui.logoAria': 'Gastronome — Home',
+
+    // ── Footer ──
+    'footer.quote': 'The restaurant with that little something extra',
+    'footer.visitUs': 'Visit Us',
+    'footer.openingHours': 'Opening Hours',
+    'footer.navigation': 'Navigation',
+    'footer.followUs': 'Follow Us',
+    'footer.copyright': 'All rights reserved.',
+    'footer.credit': 'Designed with passion',
+
+    // ── Opening hours ──
+    'hours.monday': 'Monday',
+    'hours.tuesday': 'Tuesday',
+    'hours.wednesday': 'Wednesday',
+    'hours.thursday': 'Thursday',
+    'hours.friday': 'Friday',
+    'hours.saturday': 'Saturday',
+    'hours.sunday': 'Sunday',
+    'hours.closed': 'Closed',
+
+    // ── Homepage — Hero ──
+    'hero.eyebrow': 'Since 2009 in Lund',
+    'hero.title': 'An unforgettable experience',
+    'hero.subtitle': 'Italian-Swedish fusion in the heart of Lund',
+    'hero.cta': 'Book a Table',
+    'hero.scrollDown': 'Scroll down',
+
+    // ── Homepage — Concept Intro ──
+    'concept.eyebrow': 'Our philosophy',
+    'concept.title': 'Where Italian tradition meets Swedish precision',
+    'concept.text': 'We combine the best of Italian cuisine with Swedish seasonal ingredients. Every dish tells a story of passion, quality, and love for culinary craftsmanship.',
+
+    // ── Homepage — Food Showcase ──
+    'food.eyebrow': 'From our kitchen',
+    'food.title': 'Taste the difference',
+
+    // ── Homepage — Testimonials ──
+    'testimonials.eyebrow': 'Our guests',
+    'testimonials.title': 'What they say',
+
+    // ── Homepage — Founders Story ──
+    'founders.eyebrow': 'Our story',
+    'founders.title': 'The passion behind every dish',
+
+    // ── Homepage — Takeaway ──
+    'takeaway.eyebrow': 'Takeaway & Delivery',
+    'takeaway.title': 'GASTRO|nome at home',
+
+    // ── Homepage — Instagram ──
+    'instagram.eyebrow': 'Instagram',
+    'instagram.title': 'Follow us',
+
+    // ── Events page ──
+    'events.metaTitle': 'Events — GASTRO|nome Food & Bar | Bubble Thursday & Special Nights',
+    'events.metaDesc': 'Discover GASTRO|nome\'s events. Bubble Thursday every week, seasonal menus, wine tastings and private gatherings. Bangatan 6, Lund.',
+    'events.heroEyebrow': 'Events',
+    'events.heroTitle': 'Experiences that<br />stay with you',
+    'events.heroSub': 'From Bubble Thursdays to private celebrations — there is always something to look forward to',
+    'events.bubbleBadge': 'Every Thursday',
+    'events.bubbleTitle': 'Bubble Thursday',
+    'events.bubbleText': 'Start your Thursday evening right. Every week we offer sparkling wine and freshly baked flatbread until 7 PM. Perfect for an after-work or a cozy start to the evening with friends.',
+    'events.bubbleWhen': 'When:',
+    'events.bubbleWhenVal': 'Every Thursday, 5:00 PM–7:00 PM',
+    'events.bubbleOffer': 'Offer:',
+    'events.bubbleOfferVal': 'Sparkling wine + flatbread',
+    'events.bubbleCta': 'Book a Table',
+    'events.pizzaBadge': '2023 & 2024',
+    'events.pizzaTitle': 'Pizza SM Champions',
+    'events.pizzaText': 'Two years running, we have won the gold medal at the Swedish Pizza Championships. Our winning recipes — <em>Filetto alla GASTRO</em> and <em>Cavolo Meraviglioso</em> — are on the regular menu. Taste for yourself why the judges were unanimous.',
+    'events.pizzaAward1': 'Filetto alla GASTRO — 1st place 2024',
+    'events.pizzaAward2': 'Cavolo Meraviglioso — 1st place 2023',
+    'events.pizzaCta': 'See the Menu',
+    'events.groupBadge': '9+ guests',
+    'events.groupTitle': 'Large Groups',
+    'events.groupText': 'Planning a birthday, corporate event or family dinner? We tailor menus for groups of 9 or more. Our second floor offers a private and elegant atmosphere for your celebrations.',
+    'events.groupCta': 'Read More & Book',
+    'events.ctaTitle': 'Want to be the first to know?',
+    'events.ctaText': 'Follow us on Instagram to stay up to date with upcoming events and seasonal menus.',
+
+    // ── Menus page ──
+    'menus.metaTitle': 'Menu — GASTRO|nome Food & Bar | À la Carte & Drinks',
+    'menus.metaDesc': 'Explore GASTRO|nome\'s full menu. Award-winning pizzas, handmade pasta, Italian starters and an impressive wine list. Bangatan 6, Lund.',
+    'menus.heroEyebrow': 'Menu',
+    'menus.heroTitle': 'À la Carte',
+    'menus.heroSubtitle': 'Italian-Swedish fusion with the finest seasonal ingredients',
+    'menus.drinksNav': 'Drinks Menu',
+    'menus.drinksEyebrow': 'Drinks Menu',
+    'menus.drinksTitle': 'Wine, Beer & Cocktails',
+    'menus.allergyTitle': 'Allergies?',
+    'menus.allergyText': 'For allergy-related questions, please contact our staff. We are happy to help.',
+    'menus.tagVegetarian': 'Vegetarian',
+    'menus.tagVegan': 'Vegan',
+    'menus.tagVeganOption': 'Vegan option',
+    'menus.tagGlutenFreeOption': 'Gluten-free option',
+    'menus.tagAward': 'Award-winning',
+
+    // ── Book a table page ──
+    'booking.metaTitle': 'Book a Table — GASTRO|nome Food & Bar | Reservations in Lund',
+    'booking.metaDesc': 'Book a table at GASTRO|nome, Lund\'s #1 restaurant. Call 046-390000 or book online. Bangatan 6, 222 21 Lund.',
+    'booking.eyebrow': 'Reservations',
+    'booking.title': 'Book a Table',
+    'booking.text': 'We recommend booking in advance, especially on Fridays and Saturdays. Choose the method that suits you best.',
+    'booking.callUs': 'Call us',
+    'booking.emailUs': 'Email us',
+    'booking.instagramDm': 'Instagram DM',
+    'booking.hoursTitle': 'Opening Hours',
+    'booking.findUs': 'Find us',
+    'booking.nearStation': 'In the heart of Lund, near the station',
+    'booking.mapTitle': 'GASTRO|nome map',
+
+    // ── Gift cards page ──
+    'gift.metaTitle': 'Gift Cards — GASTRO|nome Food & Bar | Give an Experience',
+    'gift.metaDesc': 'Give an unforgettable dining experience. Buy gift cards for GASTRO|nome, Lund\'s #1 restaurant. The perfect gift for any occasion.',
+    'gift.eyebrow': 'Gift Cards',
+    'gift.title': 'Give the gift of an<br />unforgettable evening',
+    'gift.text1': 'Looking for the perfect gift? A gift card to GASTRO|nome gives the recipient the freedom to enjoy award-winning food and drinks — whenever it suits them.',
+    'gift.text2': 'Contact us to purchase gift cards for any amount. We can send it digitally or you can pick up a physical card at the restaurant.',
+    'gift.callCta': 'Call Us: 046-390000',
+    'gift.emailCta': 'Email Us',
+    'gift.cardType': 'Gift Card',
+    'gift.cardValue': 'Any amount',
+
+    // ── Large groups page ──
+    'groups.metaTitle': 'Large Groups — GASTRO|nome Food & Bar | Private Dining in Lund',
+    'groups.metaDesc': 'Plan your celebration at GASTRO|nome. Tailored menus for groups of 9 or more. Private floor, corporate dinners and family gatherings. Book now!',
+    'groups.heroEyebrow': 'Large Groups',
+    'groups.heroTitle': 'Your evening,<br />our passion',
+    'groups.heroSub': 'Tailored menus and a private atmosphere for groups of 9 or more',
+    'groups.infoTitle': 'How it works',
+    'groups.infoText': 'For parties of 8 or more guests, we offer a specially adapted menu arrangement. You choose dishes from our menu and we take care of the rest. Our second floor with its elegant and secluded atmosphere is perfect for larger events.',
+    'groups.menuFormat': 'Menu Format',
+    'groups.menuFormatText': '2-course (starter + main or main + dessert) as standard. Upgrade to 3-course available.',
+    'groups.selectionTitle': 'Selection by group size',
+    'groups.selection1': '9–14 guests: choose from 6 options per category',
+    'groups.selection2': '15–19 guests: choose from 5 options per category',
+    'groups.selection3': '20+ guests: choose from 3 options per category',
+    'groups.datesTitle': 'Important dates',
+    'groups.date1': 'Menu selection no later than 5 days before',
+    'groups.date2': 'Changes to headcount by 12:00 PM on the day',
+    'groups.date3': 'Cancellation no later than 7 days before (450 SEK/guest for late cancellation)',
+    'groups.formTitle': 'Book for your group',
+    'groups.formSubtitle': 'Fill in the form and we will get back to you within 24 hours',
+    'groups.formSubject': 'Large Group — New enquiry via website',
+
+    // ── Form labels ──
+    'form.name': 'Name',
+    'form.namePlaceholder': 'Your name',
+    'form.email': 'Email',
+    'form.emailPlaceholder': 'your@email.com',
+    'form.phone': 'Phone',
+    'form.phonePlaceholder': '+46 70-xxx xxxx',
+    'form.guests': 'Number of guests',
+    'form.guestsPlaceholder': '9',
+    'form.date': 'Preferred date',
+    'form.eventType': 'Type of event',
+    'form.eventTypeDefault': 'Select...',
+    'form.eventBirthday': 'Birthday',
+    'form.eventCorporate': 'Corporate / after-work',
+    'form.eventFamily': 'Family dinner',
+    'form.eventWedding': 'Wedding / engagement',
+    'form.eventOther': 'Other',
+    'form.message': 'Message',
+    'form.messagePlaceholder': 'Tell us more about your event, wishes or questions...',
+    'form.submit': 'Send Enquiry',
+    'groups.altText': 'Prefer to call? Contact us directly at',
+    'groups.altOr': 'or email',
+
+    // ── Order online page ──
+    'order.metaTitle': 'Order Online — GASTRO|nome Food & Bar | Pickup & Delivery in Lund',
+    'order.metaDesc': 'Order GASTRO|nome\'s award-winning food online. Pickup or delivery in Lund. Pizzas, pasta, starters and more. Order via EatSmart.',
+    'order.eyebrow': 'Order Online',
+    'order.title': 'GASTRO|nome<br />to your door',
+    'order.text': 'Enjoy the same award-winning food at home. We offer pickup directly from the restaurant and delivery through our partner. Same quality, same love — straight to your door.',
+    'order.eatsmartTitle': 'Order via EatSmart',
+    'order.eatsmartDesc': 'Pickup and delivery. Browse the menu, choose your dishes and pay online.',
+    'order.eatsmartCta': 'Go to EatSmart',
+    'order.phoneTitle': 'Call & Order',
+    'order.phoneDesc': 'Prefer to order by phone? Call us and we will prepare your order.',
+
+    // ── Reviews (translated text) ──
+    'review.burim': 'Absolutely the best restaurant in Lund, if not all of Sk\u00e5ne. Fantastic atmosphere and staff that make you feel right at home.',
+    'review.lisa': 'Always friendly staff with fantastic food in a cozy setting. We always come back!',
+    'review.oskar': 'Incredible pizzas, amazing flatbread, wonderful staff and fantastic cocktails. The new menu is on a completely different level.',
+    'review.emma': 'Our absolute favorite place. 10/10 food and drinks. Every flavor combination is well thought out. A little hidden gem.',
+    'review.spellevink': 'Valentine\'s Day dinner at Lund\'s coziest spot. Fantastic atmosphere, wonderful food and the owner came by to greet us personally.',
+    'review.evelina': 'Celebrated a birthday with the championship-winning pizza Cavolo Meraviglioso — unique and fantastic flavor. The desserts Fragola and Cr\u00e8me br\u00fbl\u00e9e were perfect.',
+    'review.yasna': 'Celebrated a birthday with exceptional service. The pizzas were in a completely different dimension and the beef dish melted in your mouth.',
+    'review.mark': 'Family-friendly with delicious and flavorful food in a cozy atmosphere. The garlic bread freshly baked with care. Welcoming staff.',
+  },
+} as const;
+
+export type UIKey = keyof typeof ui.sv;

@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import { t } from '../../../i18n/utils';
+
+const lang = 'en' as const;
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'gift.metaTitle')}
+  description={t(lang, 'gift.metaDesc')}
+>
+  <section class="gift">
+    <div class="gift__container">
+      <div class="gift__content fade-up">
+        <span class="gift__eyebrow">{t(lang, 'gift.eyebrow')}</span>
+        <h1 class="gift__title" set:html={t(lang, 'gift.title')} />
+        <p class="gift__text">{t(lang, 'gift.text1')}</p>
+        <p class="gift__text">{t(lang, 'gift.text2')}</p>
+
+        <div class="gift__actions">
+          <Button href="tel:046390000" variant="primary" size="lg">{t(lang, 'gift.callCta')}</Button>
+          <Button href="mailto:info@gastronome.se" variant="outline" size="lg">{t(lang, 'gift.emailCta')}</Button>
+        </div>
+      </div>
+
+      <div class="gift__visual fade-up">
+        <div class="gift__card">
+          <div class="gift__card-inner">
+            <span class="gift__card-logo">GASTRO<span class="gift__card-pipe">|</span>nome</span>
+            <span class="gift__card-type">{t(lang, 'gift.cardType')}</span>
+            <div class="gift__card-bottom">
+              <span class="gift__card-value">{t(lang, 'gift.cardValue')}</span>
+              <span class="gift__card-loc">Bangatan 6, Lund</span>
+            </div>
+          </div>
+        </div>
+        <img src="/images/654113767_18086540393349192_9128637126260060053_n.jpg" alt="Wine toast at GASTRO|nome" loading="lazy" class="gift__bg-image" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .gift {
+    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    background: var(--color-bg, #FAFAF9);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .gift__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  .gift__eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent, #8B6F47);
+    margin-bottom: 1.25rem;
+  }
+
+  .gift__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-text, #1A1A1A);
+    margin: 0 0 1.5rem;
+  }
+
+  .gift__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary, #6B6B6B);
+    margin: 0 0 1.25rem;
+    max-width: 480px;
+  }
+
+  .gift__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .gift__visual {
+    position: relative;
+  }
+
+  .gift__bg-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    display: block;
+  }
+
+  .gift__card {
+    position: absolute;
+    bottom: -2rem;
+    left: -1rem;
+    width: 320px;
+    z-index: 2;
+  }
+
+  .gift__card-inner {
+    background: rgba(15, 15, 15, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .gift__card-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .gift__card-pipe { color: #C6A86C; }
+
+  .gift__card-type {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .gift__card-bottom {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .gift__card-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #C6A86C;
+  }
+
+  .gift__card-loc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    .gift__container { grid-template-columns: 1fr; }
+    .gift__card { position: relative; bottom: auto; left: auto; width: 100%; margin-top: -3rem; }
+    .gift__actions { justify-content: center; }
+    .gift__content { text-align: center; }
+    .gift__text { margin-left: auto; margin-right: auto; }
+  }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
+</style>

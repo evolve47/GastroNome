@@ -2,6 +2,8 @@
 import Navbar from '@components/ui/Navbar.astro';
 import Footer from '@components/ui/Footer.astro';
 import { siteConfig } from '@data/site';
+import { getHreflangUrls, t } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
 import '@/styles/global.css';
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
   canonical?: string;
   structuredData?: object;
   noindex?: boolean;
+  lang?: Locale;
 }
 
 const {
@@ -20,6 +23,7 @@ const {
   canonical,
   structuredData,
   noindex = false,
+  lang = 'sv',
 } = Astro.props;
 
 const pageTitle = title === siteConfig.name
@@ -34,6 +38,10 @@ const defaultOgImage = '/images/restaurant-floor-1.jpg';
 const ogImageUrl = ogImage?.startsWith('http')
   ? ogImage
   : new URL(ogImage ?? defaultOgImage, siteConfig.url).href;
+
+const ogLocale = lang === 'en' ? 'en_GB' : 'sv_SE';
+
+const hreflangUrls = getHreflangUrls(Astro.url.pathname, lang, siteConfig.url);
 
 /* ── JSON-LD: LocalBusiness + Restaurant ── */
 const jsonLd = {
@@ -116,7 +124,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="sv" class="no-js">
+<html lang={lang} class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -136,6 +144,11 @@ const jsonLd = {
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Hreflang tags for SEO -->
+    {hreflangUrls.map(({ lang: hLang, href }) => (
+      <link rel="alternate" hreflang={hLang} href={href} />
+    ))}
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/gastronome-1.png" />
 
@@ -147,7 +160,7 @@ const jsonLd = {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Gastronome" />
 
     <!-- Twitter Card -->
@@ -177,19 +190,19 @@ const jsonLd = {
   </head>
 
   <body>
-    <Navbar />
+    <Navbar lang={lang} />
 
     <main id="main-content">
       <slot />
     </main>
 
-    <Footer />
+    <Footer lang={lang} />
 
     <!-- Scroll-to-top button -->
     <button
       id="scroll-top"
       class="scroll-top-btn"
-      aria-label="Scrolla till toppen"
+      aria-label={t(lang, 'ui.scrollToTop')}
       type="button"
     >
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
