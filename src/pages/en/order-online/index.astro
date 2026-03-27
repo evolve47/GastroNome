@@ -11,11 +11,22 @@ const lang = 'en' as const;
   title={t(lang, 'order.metaTitle')}
   description={t(lang, 'order.metaDesc')}
 >
+  <!-- Mini hero banner -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="/images/626288527_18084908900349192_8396846120285646429_n.webp" alt="GASTRO|nome takeaway boxes" loading="eager" />
+      <div class="page-hero__overlay"></div>
+    </div>
+    <div class="page-hero__content">
+      <span class="page-hero__eyebrow">{t(lang, 'order.eyebrow')}</span>
+      <h1 class="page-hero__title">GASTRO|nome to your door</h1>
+    </div>
+  </section>
+
   <section class="order">
     <div class="order__container">
       <div class="order__content fade-up">
-        <span class="order__eyebrow">{t(lang, 'order.eyebrow')}</span>
-        <h1 class="order__title" set:html={t(lang, 'order.title')} />
+        <h2 class="order__title">Order easily online</h2>
         <p class="order__text">{t(lang, 'order.text')}</p>
 
         <div class="order__options">
@@ -66,12 +77,18 @@ const lang = 'en' as const;
 </script>
 
 <style>
+  /* Page Hero Banner */
+  .page-hero { position: relative; height: 40vh; min-height: 280px; max-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0a0a0a; }
+  .page-hero__bg { position: absolute; inset: 0; }
+  .page-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6)); }
+  .page-hero__content { position: relative; z-index: 2; text-align: center; padding: 0 1.5rem; }
+  .page-hero__eyebrow { display: block; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; }
+  .page-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 400; color: #fff; margin: 0; }
+
   .order {
-    padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+    padding: clamp(4rem, 8vw, 6rem) 1.5rem;
     background: var(--color-bg, #FAFAF9);
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
   }
 
   .order__container {
