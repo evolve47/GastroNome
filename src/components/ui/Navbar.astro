@@ -220,6 +220,11 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   }
 
+  /* Open state: solid bg so header is readable over mobile panel */
+  .navbar.is-open {
+    background: rgba(250, 250, 249, 0.98);
+  }
+
   .navbar__inner {
     display: flex;
     align-items: center;
@@ -252,7 +257,8 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     transition: color 0.4s ease;
   }
 
-  .navbar.is-scrolled .navbar__logo-text {
+  .navbar.is-scrolled .navbar__logo-text,
+  .navbar.is-open .navbar__logo-text {
     color: var(--color-text-primary, #1a1a1a);
   }
 
@@ -262,7 +268,8 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     transition: color 0.4s ease;
   }
 
-  .navbar.is-scrolled .navbar__logo-pipe {
+  .navbar.is-scrolled .navbar__logo-pipe,
+  .navbar.is-open .navbar__logo-pipe {
     color: var(--color-accent-warm, #8b6f47);
   }
 
@@ -450,7 +457,8 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
       background-color 0.4s ease;
   }
 
-  .navbar.is-scrolled .navbar__hamburger-line {
+  .navbar.is-scrolled .navbar__hamburger-line,
+  .navbar.is-open .navbar__hamburger-line {
     background-color: var(--color-text-primary, #1a1a1a);
   }
 
@@ -506,11 +514,11 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
     display: block;
     font-family: var(--font-serif, 'Cormorant Garamond', serif);
     font-size: clamp(1.75rem, 5vw, 2.25rem);
-    font-weight: 400;
-    color: var(--color-text-primary, #1a1a1a);
+    font-weight: 500;
+    color: #2C2C2C;
     text-decoration: none;
-    padding-block: 0.75rem;
-    border-bottom: 1px solid var(--color-border-subtle, #e8e5e0);
+    padding-block: 0.875rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     transition:
       color 0.3s ease,
       padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -523,6 +531,7 @@ const navLinks = navItems.filter((l) => l.href !== ctaHref);
 
   .navbar__mobile-link.is-active {
     color: var(--color-accent-warm, #8b6f47);
+    font-weight: 600;
   }
 
   .navbar__mobile-cta {
