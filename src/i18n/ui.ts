@@ -270,7 +270,7 @@ export const ui = {
     // ── Navigation ──
     'nav.hem': 'Home',
     'nav.evenemang': 'Events',
-    'nav.menyer': 'Menus',
+    'nav.menyer': 'Menu',
     'nav.boka-bord': 'Book a Table',
     'nav.presentkort': 'Gift Cards',
     'nav.stora-sallskap': 'Large Groups',
@@ -326,7 +326,7 @@ export const ui = {
     'hero.title': 'An unforgettable experience',
     'hero.titleLine1': 'An unforgettable',
     'hero.titleLine2': 'experience',
-    'hero.subtitle': 'Italian-Swedish fusion with love for quality ingredients, craftsmanship and community',
+    'hero.subtitle': 'Italian-Swedish fusion with a love for quality ingredients, craftsmanship, and community',
     'hero.cta': 'Book a Table',
     'hero.ctaMenu': 'Explore the Menu',
     'hero.scrollDown': 'Scroll',
@@ -342,8 +342,8 @@ export const ui = {
     // ── Homepage — Concept Intro ──
     'concept.eyebrow': 'Our Philosophy',
     'concept.title': 'Where Italy meets Sweden',
-    'concept.text': 'An unforgettable evening is about the perfect balance between exquisite food and drink, a welcoming atmosphere and warm personal service.',
-    'concept.text2': 'Every visit to GASTRO|nome should be an experience — whether you are enjoying a dinner, sharing a pizza with friends, or simply relaxing with a glass of wine. You are always warmly welcome.',
+    'concept.text': 'An unforgettable evening is about the perfect balance of exquisite food and drink, a welcoming atmosphere, and warm personal service.',
+    'concept.text2': 'Every visit to GASTRO|nome should be an experience — whether you are enjoying dinner, sharing a pizza with friends, or simply relaxing with a glass of wine. You are always warmly welcome.',
     'concept.cta': 'Explore our menu',
 
     // ── Homepage — Food Showcase ──
@@ -360,7 +360,7 @@ export const ui = {
     'eventsHome.bubbleDesc': 'Every Thursday we offer sparkling wine and flatbread until 7 PM. The perfect start to the evening.',
     'eventsHome.pizzaBadge': '2023 & 2024',
     'eventsHome.pizzaTitle': 'Pizza SM Champions',
-    'eventsHome.pizzaDesc': 'Two years running, we won the Swedish Pizza Championships. Taste the winners with us.',
+    'eventsHome.pizzaDesc': 'Two years running, we\'ve won the Swedish Pizza Championships. Taste the winning pizzas with us.',
     'eventsHome.groupBadge': '9+ guests',
     'eventsHome.groupTitle': 'Large Groups',
     'eventsHome.groupDesc': 'Planning a celebration? We tailor menus for groups of 9 or more.',
@@ -369,13 +369,13 @@ export const ui = {
     // ── Homepage — Testimonials ──
     'testimonials.eyebrow': 'Our Guests',
     'testimonials.title': 'Experiences to remember',
-    'testimonials.meta': '4.8 of 5 · 884 reviews',
+    'testimonials.meta': '4.8 out of 5 · 884 reviews',
     'testimonials.readAll': 'Read all reviews on TripAdvisor',
 
     // ── Homepage — Founders Story ──
     'founders.eyebrow': 'Since 2009',
     'founders.title': 'With passion for dining experiences',
-    'founders.text': 'GASTRO|nome was founded with a simple vision — to create a place where great food, warm hospitality and genuine community come together. We have grown since then, but the heart remains the same.',
+    'founders.text': 'GASTRO|nome was founded with a simple vision — to create a place where great food, warm hospitality, and genuine community come together. We\'ve grown since then, but the heart remains the same.',
     'founders.signature': '— The Founders of GASTRO|nome',
 
     // ── Homepage — Takeaway ──
@@ -397,7 +397,7 @@ export const ui = {
     'events.heroSub': 'From Bubble Thursdays to private celebrations — there is always something to look forward to',
     'events.bubbleBadge': 'Every Thursday',
     'events.bubbleTitle': 'Bubble Thursday',
-    'events.bubbleText': 'Start your Thursday evening right. Every week we offer sparkling wine and freshly baked flatbread until 7 PM. Perfect for an after-work or a cozy start to the evening with friends.',
+    'events.bubbleText': 'Start your Thursday evening right. Every week we offer sparkling wine and freshly baked flatbread until 7 PM. Perfect for after-work drinks or a relaxed start to the evening with friends.',
     'events.bubbleWhen': 'When:',
     'events.bubbleWhenVal': 'Every Thursday, 5:00 PM–7:00 PM',
     'events.bubbleOffer': 'Offer:',
@@ -466,17 +466,17 @@ export const ui = {
     'groups.heroTitle': 'Your evening,<br />our passion',
     'groups.heroSub': 'Tailored menus and a private atmosphere for groups of 9 or more',
     'groups.infoTitle': 'How it works',
-    'groups.infoText': 'For parties of 8 or more guests, we offer a specially adapted menu arrangement. You choose dishes from our menu and we take care of the rest. Our second floor with its elegant and secluded atmosphere is perfect for larger events.',
+    'groups.infoText': 'For parties of 8 or more, we offer a specially curated set menu. You choose dishes from our à la carte and we take care of the rest. Our second floor, with its elegant and intimate atmosphere, is perfect for larger gatherings.',
     'groups.menuFormat': 'Menu Format',
-    'groups.menuFormatText': '2-course (starter + main or main + dessert) as standard. Upgrade to 3-course available.',
+    'groups.menuFormatText': '2-course (starter + main or main + dessert) as standard. 3-course upgrade available.',
     'groups.selectionTitle': 'Selection by group size',
     'groups.selection1': '9–14 guests: choose from 6 options per category',
     'groups.selection2': '15–19 guests: choose from 5 options per category',
     'groups.selection3': '20+ guests: choose from 3 options per category',
     'groups.datesTitle': 'Important dates',
-    'groups.date1': 'Menu selection no later than 5 days before',
-    'groups.date2': 'Changes to headcount by 12:00 PM on the day',
-    'groups.date3': 'Cancellation no later than 7 days before (450 SEK/guest for late cancellation)',
+    'groups.date1': 'Menu selection no later than 5 days in advance',
+    'groups.date2': 'Changes to headcount by 12:00 PM on the day of the event',
+    'groups.date3': 'Cancellation no later than 7 days in advance (450 SEK/guest for late cancellation)',
     'groups.formTitle': 'Book for your group',
     'groups.formSubtitle': 'Fill in the form and we will get back to you within 24 hours',
     'groups.formSubject': 'Large Group — New enquiry via website',
@@ -518,7 +518,7 @@ export const ui = {
 
     // ── Reviews (translated text) ──
     'review.burim': 'Absolutely the best restaurant in Lund, if not all of Sk\u00e5ne. Fantastic atmosphere and staff that make you feel right at home.',
-    'review.lisa': 'Always friendly staff with fantastic food in a cozy setting. We always come back!',
+    'review.lisa': 'Always friendly staff with fantastic food in a cozy setting. We keep coming back!',
     'review.oskar': 'Incredible pizzas, amazing flatbread, wonderful staff and fantastic cocktails. The new menu is on a completely different level.',
     'review.emma': 'Our absolute favorite place. 10/10 food and drinks. Every flavor combination is well thought out. A little hidden gem.',
     'review.spellevink': 'Valentine\'s Day dinner at Lund\'s coziest spot. Fantastic atmosphere, wonderful food and the owner came by to greet us personally.',

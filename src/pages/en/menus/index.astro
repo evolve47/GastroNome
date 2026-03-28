@@ -146,18 +146,35 @@ const lang = 'en' as const;
   const sections = document.querySelectorAll('.menu-section');
   const navLinks = document.querySelectorAll('.menu-nav__link');
 
+  // Track which sections are currently in the observation zone
+  const visibleSections = new Set();
   const navObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach((link) => {
-            link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
-          });
+          visibleSections.add(entry.target.id);
+        } else {
+          visibleSections.delete(entry.target.id);
         }
       });
+
+      // Highlight the last visible section in DOM order (most recently scrolled to)
+      let activeId = null;
+      sections.forEach((section) => {
+        if (visibleSections.has(section.id)) activeId = section.id;
+      });
+
+      if (activeId) {
+        navLinks.forEach((link) => {
+          const isActive = link.getAttribute('href') === `#${activeId}`;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        });
+      }
     },
-    { threshold: 0.2, rootMargin: '-100px 0px -60% 0px' }
+    { rootMargin: '-120px 0px -60% 0px', threshold: 0 }
   );
   sections.forEach((s) => navObserver.observe(s));
 </script>

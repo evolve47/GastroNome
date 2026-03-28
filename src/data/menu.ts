@@ -51,7 +51,7 @@ export const menu: MenuCategory[] = [
       {
         name: 'Parmigiano Reggiano DOP',
         description: '30 månaders lagrad parmesan av opastöriserad mjölk',
-        descriptionEn: '30 months aged Parmesan cheese made from unpasteurized fresh milk',
+        descriptionEn: 'Parmesan cheese aged 30 months, made from unpasteurized fresh milk',
         price: '98',
       },
       {
@@ -186,11 +186,11 @@ export const menu: MenuCategory[] = [
       },
       {
         name: 'Löjroms Heaven',
-        nameEn: 'Lumpfish Roe Heaven',
+        nameEn: 'Vendace Roe Heaven',
         description:
           'Philadelphiakräm, löjrom, crème fraîche, gräslök, dill och citron',
         descriptionEn:
-          'Cream cheese, lumpfish roe, crème fraîche, chives, dill, and lemon',
+          'Cream cheese, vendace roe, crème fraîche, chives, dill, and lemon',
         price: '259',
       },
     ],
@@ -201,7 +201,7 @@ export const menu: MenuCategory[] = [
     id: 'gourmet-pizza',
     title: 'Gourmet Pizza',
     subtitle: 'Vinnare av Pizza SM 2023 & 2024',
-    subtitleEn: 'Winners of Pizza SM 2023 & 2024',
+    subtitleEn: 'Winners of the Swedish Pizza Championships 2023 & 2024',
     note: 'Glutenfri botten +39 kr | Veganskt alternativ +20 kr',
     noteEn: 'Gluten-free base +39 SEK | Vegan option +20 SEK',
     items: [
@@ -411,7 +411,7 @@ export const menu: MenuCategory[] = [
         description:
           'En kula ur husets sortiment, fråga personalen om dagens smaker',
         descriptionEn:
-          "A large scoop of the house's delicious gelato or sorbet. Ask staff for today's flavors",
+          "A generous scoop of our house gelato or sorbet. Ask your server for today's flavors",
         price: '89',
         tags: ['veganOption'],
       },

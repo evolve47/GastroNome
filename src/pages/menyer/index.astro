@@ -144,21 +144,33 @@ import { drinks as drinkCategories } from '../../data/drinks';
   });
 
   // Scroll handler: IntersectionObserver highlights active tab
+  // Track which sections are currently in the observation zone
+  const visibleSections = new Set();
   const navObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const id = entry.target.id;
-          menuNavLinks.forEach((link) => {
-            const isActive = link.getAttribute('href') === `#${id}`;
-            link.classList.toggle('is-active', isActive);
-            // Auto-scroll active tab into center of horizontal nav
-            if (isActive) {
-              link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-          });
+          visibleSections.add(entry.target.id);
+        } else {
+          visibleSections.delete(entry.target.id);
         }
       });
+
+      // Highlight the last visible section in DOM order (most recently scrolled to)
+      let activeId = null;
+      menuSections.forEach((section) => {
+        if (visibleSections.has(section.id)) activeId = section.id;
+      });
+
+      if (activeId) {
+        menuNavLinks.forEach((link) => {
+          const isActive = link.getAttribute('href') === `#${activeId}`;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) {
+            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        });
+      }
     },
     { rootMargin: '-120px 0px -60% 0px', threshold: 0 }
   );
